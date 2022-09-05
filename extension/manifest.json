@@ -4,19 +4,19 @@
     "description": "an app that helps you make tables for your shifts",
     "version": "1.0.0",
     "author": "plank",
-    "icons":{
+    "icons": {
         "128": "shifttable logo.png"
     },
     "action": {
-		"default_title": "Shift Table"
-	},
+        "default_title": "Shift Table"
+    },
     "background": {
-        "service_worker": "background.html"
+        "service_worker": "background.js"
     },
     "permissions": [
         "identity",
         "identity.email"
     ],
-    "content_security_policy": "script-src 'self' https://www.gstatic.com/ https://*.firebaseio.com https://www.googleapis.com; object-src 'self'"
-
+    "host_permissions": ["https://api.com/*"]
+    
 }
