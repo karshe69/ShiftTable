@@ -1,0 +1,38 @@
+{
+  "name": "api",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon app.js",
+    "build": "postcss public/styles/tailwind.css -o public/styles/style.css",
+    "watch": "postcss public/styles/tailwind.css -o public/styles/style.css --watch",
+    "start": "concurrently --kill-others \"npm run watch\" \"npm run dev\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "autoprefixer": "^10.4.12",
+    "cors": "^2.8.5",
+    "ejs": "^3.1.8",
+    "express": "^4.18.2",
+    "firebase-admin": "^11.0.1",
+    "postcss": "^8.4.17",
+    "postcss-cli": "^10.0.0",
+    "tailwindcss": "^3.1.8"
+  },
+  "devDependencies": {
+    "concurrently": "^7.4.0",
+    "nodemon": "^2.0.20"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/karshe69/ShiftTable.git"
+  },
+  "bugs": {
+    "url": "https://github.com/karshe69/ShiftTable/issues"
+  },
+  "homepage": "https://github.com/karshe69/ShiftTable#readme",
+  "description": ""
+}
