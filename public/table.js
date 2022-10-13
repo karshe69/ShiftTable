@@ -7,14 +7,14 @@ console.log(getDoc(tables));
 
 const auth = getAuth();
 onAuthStateChanged(auth, (user) => {
-    if (user) {
-      const uid = user.uid;
-      console.log(uid);
-    } else {
-      window.location.href = "./login"
-    }
-  });
+  if (user) {
+    const uid = user.uid;
+    console.log(uid);
+  } else {
+    window.location.href = "./login"
+  }
+});
 
-function logout(){
-    auth.signOut()
+function logout() {
+  auth.signOut()
 }

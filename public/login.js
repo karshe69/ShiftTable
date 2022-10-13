@@ -7,10 +7,10 @@ document.getElementById("login-btn-auth").addEventListener("click", authenticate
 
 const auth = getAuth();
 onAuthStateChanged(auth, (user) => {
-  if (user) {
-    window.location.href = "/"
-} else {
-  }
+    if (user) {
+        window.location.href = "/"
+    } else {
+    }
 });
 
 function authenticate() {
