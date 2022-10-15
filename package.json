@@ -4,10 +4,11 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon app.js",
+    "nodev": "nodemon app.js",
     "build": "postcss public/styles/tailwind.css -o public/styles/style.css",
     "watch": "postcss public/styles/tailwind.css -o public/styles/style.css --watch",
-    "start": "concurrently --kill-others \"npm run watch\" \"npm run dev\""
+    "dev": "concurrently --kill-others \"npm run watch\" \"npm run nodev\"",
+    "start": "npm app.js"
   },
   "keywords": [],
   "author": "",
