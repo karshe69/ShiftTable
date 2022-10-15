@@ -3,9 +3,6 @@ import { getAuth, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/
 import { getFirestore, doc, collection, getDocs, getDoc, where, query } from "https://www.gstatic.com/firebasejs/9.9.4/firebase-firestore.js"
 const db = getFirestore(app);
 
-//consts for design:
-const tableElemSize = 128
-
 document.getElementById("logout-btn-auth").addEventListener("click", logout);
 
 async function getTable(uid) {
@@ -48,7 +45,7 @@ function createTableElem(name, id) {
   }
   tableBox.innerText = name
   tableBox.href = `/table/${id}`
-  tableBox.className = "flex items-center justify-center bg-slate-100 hover:scale-105 ease-in-out min-w-[" + tableElemSize + "px] w-[" + tableElemSize + "px] h-[" + tableElemSize + "px]"
+  tableBox.className = "flex items-center justify-center bg-slate-100 hover:scale-105 ease-in-out min-w-[128px] w-[128px] h-[128px]"
   return tableBox
 }
 
