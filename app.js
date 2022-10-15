@@ -27,11 +27,5 @@ app.get('/table/:tableID', (req, res) => {
 
 app.listen(port, () => (console.log("listening on port" + port)))
 
-/*
-git public
-git commit -m "commit"
-git push -f heroku
-*/
-
 //yarden.karsh@gmail.com    brbr1212
 //tomo@gmail.com            tomo1234
