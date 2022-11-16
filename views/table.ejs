@@ -8,16 +8,26 @@
 </head>
 
 <body>
-  <h1 class="text-3xl">help</h1>
-  <h2 class="text-5xl">help</h2>
-  <div id="loggedInArea">
-    <h1 class="text-4xl">table ID: <%= data.tableID %>
-    </h1>
-    <h1 class="text-2xl">table ID: <%= data.tableID %>
-    </h1>
-  </div>
+  <nav class="relative container mx-auto p-6 bg-gray-500">
+    <!-- flex container-->
+    <div class="flex items-center justify-between">
+      <a href="/contact" class="hover:text-gray-300 text-white font-bold">Contact Us</a>
+      <a href="/" class="hover:text-gray-300 text-white font-bold">SHIFT TABLE</a>
+      <button id="logout-btn-auth"
+        class="bg-gray-800 hover:bg-slate-700 text-white font-bold py-2 px-4 rounded-full">Log Out</a>
+    </div>
+  </nav>
+
+  <h1 class="text-3xl">table title <%= data.tableID %>
+  </h1>
+  <div class="relative container mx-auto p-6 flex items-center justify-between">
+    <div class="bg-gray-200 p-6">
+      <table id="main table" class=""></table>
+    </div>
+    <div class="bg-gray-200">lol</div>
   </div>
   <script type="module" src="../auth.js"></script>
+  <script>var tableID ="<%= data.tableID %>"</script>
   <script type="module" src="../table.js"></script>
 </body>
 
