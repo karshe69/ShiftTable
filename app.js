@@ -24,6 +24,10 @@ app.get('/table/:tableID', (req, res) => {
     res.render("table", { data: { tableID: req.params.tableID } })
 })
 
+app.get('/people/:tableID', (req, res) => {
+    res.render("people", { data: { tableID: req.params.tableID } })
+})
+
 
 app.listen(port, () => (console.log("listening on port" + port)))
 

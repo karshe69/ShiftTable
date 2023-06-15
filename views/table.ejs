@@ -7,27 +7,90 @@
   <link href="../styles/style.css" , rel="stylesheet">
 </head>
 
-<body>
-  <nav class="relative container mx-auto p-6 bg-gray-500">
-    <!-- flex container-->
-    <div class="flex items-center justify-between">
-      <a href="/contact" class="hover:text-gray-300 text-white font-bold">Contact Us</a>
-      <a href="/" class="hover:text-gray-300 text-white font-bold">SHIFT TABLE</a>
-      <button id="logout-btn-auth"
-        class="bg-gray-800 hover:bg-slate-700 text-white font-bold py-2 px-4 rounded-full">Log Out</a>
-    </div>
-  </nav>
+<body class="bg-gray-300">
+  <div class="h-screen">
+    <nav class="bg-gray-800 p-6">
+      <div class="flex justify-between items-center">
+        <a href="/" class="text-white text-2xl font-medium">Shift Table</a>
+        <div class="flex" >
+          <a href="/" class="text-white text-lg mr-4">Home</a>
+          <a href="/contact" class="text-white text-lg mr-4">Contact</a>
+          <button id="logout-btn-auth"
+            class="text-white text-lg mr-4 font-bold rounded-full hover:bg-slate-700">Logout</button>
+        </div>
+      </div>
+    </nav>
 
-  <h1 class="text-3xl">table title <%= data.tableID %>
-  </h1>
-  <div class="relative container mx-auto p-6 flex items-center justify-between">
-    <div class="bg-gray-200 p-6">
-      <table id="main table" class=""></table>
+    <div class="flex justify-between py-6 h-3/4">
+      <div class="flex-wrap px-6">
+        <div class="overflow-hidden shadow-md rounded-lg border-2 border-gray-700 h-full">
+          <table id="main table" class="bg-gray-100 border-collapse w-full h-full" style="table-layout: fixed">
+            <colgroup>
+              <col style="width: 14.28%">
+              <col style="width: 14.28%" class="border-x border-gray-600">
+              <col style="width: 14.28%" class="border-x border-gray-600">
+              <col style="width: 14.28%" class="border-x border-gray-600">
+              <col style="width: 14.28%" class="border-x border-gray-600">
+              <col style="width: 14.28%" class="border-x border-gray-600">
+              <col style="width: 14.28%">
+            </colgroup>
+            <thead class="bg-gray-600 text-white text-center">
+              <tr>
+                <th class="px-4 py-2">sunday</th>
+                <th class="px-4 py-2">monday</th>
+                <th class="px-4 py-2">tuesday</th>
+                <th class="px-4 py-2">wednesday</th>
+                <th class="px-4 py-2">thursday</th>
+                <th class="px-4 py-2">friday</th>
+                <th class="px-4 py-2">saturday</th>
+              </tr>
+            </thead>
+            <tbody class="text-center">
+              <tr class="border-y border-gray-700">
+                <td id="draggable" class="rounded-md px-4 py-2" draggable="true"></td>
+                <td id="draggable" class="rounded-md px-4 py-2" draggable="true"></td>
+                <td id="draggable" class="rounded-md px-4 py-2" draggable="true"></td>
+                <td id="draggable" class="rounded-md px-4 py-2" draggable="true"></td>
+                <td id="draggable" class="rounded-md px-4 py-2" draggable="true"></td>
+                <td id="draggable" class="rounded-md px-4 py-2" draggable="true"></td>
+                <td id="draggable" class="rounded-md px-4 py-2" draggable="true"></td>
+              </tr>
+              <tr class="border-y border-gray-700">
+                <td id="draggable" class="rounded-md px-4 py-2" draggable="true"></td>
+                <td id="draggable" class="rounded-md px-4 py-2" draggable="true"></td>
+                <td id="draggable" class="rounded-md px-4 py-2" draggable="true"></td>
+                <td id="draggable" class="rounded-md px-4 py-2" draggable="true"></td>
+                <td id="draggable" class="rounded-md px-4 py-2" draggable="true"></td>
+                <td id="draggable" class="rounded-md px-4 py-2" draggable="true"></td>
+                <td id="draggable" class="rounded-md px-4 py-2" draggable="true"></td>
+              </tr>
+              <tr class="border-y border-gray-700">
+                <td id="draggable" class="rounded-md px-4 py-2" draggable="true" rowspan="2">asd
+                dsa
+                </td>
+                <td id="draggable" class="rounded-md px-4 py-2" draggable="true" rowspan="2"></td>
+                <td id="draggable" class="rounded-md px-4 py-2" draggable="true" rowspan="2"></td>
+                <td id="draggable" class="rounded-md px-4 py-2" draggable="true" rowspan="2"></td>
+                <td id="draggable" class="rounded-md px-4 py-2" draggable="true" rowspan="2"></td>
+                <td id="draggable" class="rounded-md px-4 py-2" draggable="true" rowspan="2"></td>
+                <td id="draggable" class="rounded-md px-4 py-2" draggable="true" rowspan="2"></td>
+              </tr>
+              <tr>
+
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="px-6">
+        <ol id="name list" class="bg-gray-100 border-2 border-gray-600 w-52 rounded-lg flex flex-wrap">
+          <li class="font-medium text-center bg-gray-600 text-white w-full">people</li>
+        </ol>
+      </div>
     </div>
-    <div class="bg-gray-200">lol</div>
   </div>
   <script type="module" src="../auth.js"></script>
-  <script>var tableID ="<%= data.tableID %>"</script>
+  <script>var tableID = "<%= data.tableID %>"</script>
   <script type="module" src="../table.js"></script>
 </body>
 

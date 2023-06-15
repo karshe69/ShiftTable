@@ -16,7 +16,7 @@ async function getTable(uid) {
   }
   else {
     viewSnapshot.forEach((doc) => {
-      viewTables.appendChild(viewTables.appendChild(createTableElem(doc.data()["name"], doc.id)))
+      viewTables.appendChild(createTableElem(doc.data()["name"], doc.id))
     });
   }
 
@@ -26,14 +26,12 @@ async function getTable(uid) {
   const adminTables = document.getElementById("adminTables")
 
   if (adminSnapshot.empty) {
-    viewTables.appendChild(createTableElem(null, null))
+    adminTables.appendChild(createTableElem(null, null))
   }
   else {
-    for (let index = 0; index < 10; index++) {
-      adminSnapshot.forEach((doc) => {
-        adminTables.appendChild(viewTables.appendChild(createTableElem(doc.data()["name"], doc.id)))
-      });
-    }
+    adminSnapshot.forEach((doc) => {
+      adminTables.appendChild(createTableElem(doc.data()["name"], doc.id))
+    });
   }
 }
 
@@ -56,7 +54,7 @@ onAuthStateChanged(auth, (user) => {
     const uid = user.uid;
     getTable(uid)
   } else {
-    window.location.href = "./login"
+    window.location.href = "/login"
   }
 });
 

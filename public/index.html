@@ -8,14 +8,14 @@
 </head>
 
 <body>
-  <!-- nav bar-->
-  <nav class="relative container mx-auto p-6 bg-gray-500">
-    <!-- flex container-->
-    <div class="flex items-center justify-between">
-      <a href="/contact" class="hover:text-gray-300 text-white font-bold">Contact Us</a>
-      <a href="/" class="hover:text-gray-300 text-white font-bold">SHIFT TABLE</a>
-      <button id="logout-btn-auth"
-        class="bg-gray-800 hover:bg-slate-700 text-white font-bold py-2 px-4 rounded-full">Log Out</a>
+  <nav class="bg-gray-800 p-6">
+    <div class="flex justify-between items-center">
+        <a href="/" class="text-white text-2xl font-medium">Shift Table</a>
+        <div class="flex">
+            <a href="/" class="text-white text-lg mr-4">Home</a>
+            <a href="/contact" class="text-white text-lg mr-4">Contact</a>
+            <button id="logout-btn-auth" class="text-white text-lg mr-4 font-bold rounded-full hover:bg-slate-700">Logout</button>
+        </div>
     </div>
   </nav>
   <!-- table selection -->
