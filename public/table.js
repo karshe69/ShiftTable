@@ -10,7 +10,7 @@ async function getTable(tid) {
   const tableSnap = await getDoc(tableRef)
   if (tableSnap.exists()) {
     console.log(tableSnap.data());
-  }   
+  }
   const listQuery = query(collection(db, "tables/" + tid + "/people"))
   const listSnap = await getDocs(listQuery);
 
@@ -54,7 +54,7 @@ function createListElem(name, id) {
   const tableBox = document.createElement("a")
   if (name == null) {
     tableBox.innerText = `Nothing To See Here`
-    return tableBox 
+    return tableBox
   }
   tableBox.innerText = name
   tableBox.href = `/person/${id}`

@@ -3,6 +3,9 @@ import { getAuth } from 'firebase/auth'
 import { getFirestore } from 'firebase/firestore'
 
 // TODO: Replace the following with your app's Firebase project configuration
+
+console.log(process.env.PUBLIC_API);
+
 const firebaseConfig = {
     apiKey: process.env.PUBLIC_API,
     authDomain: process.env.PUBLIC_AUTHDOMAIN,
@@ -14,6 +17,7 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
+console.log(firebaseConfig);
 
 export const auth = getAuth(app)
 export const db = getFirestore(app)

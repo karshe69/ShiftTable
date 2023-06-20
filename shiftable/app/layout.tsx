@@ -1,5 +1,6 @@
 import './globals.css'
 import { Inter } from 'next/font/google'
+import { AuthProvider } from '../context/AuthContext'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -15,19 +16,21 @@ export default function RootLayout({
 }) {
   return (
     <html>
-      <body>
-        <nav className="bg-gray-800 p-6">
-          <div className="flex justify-between items-center">
-            <a href="/" className="text-white text-2xl font-medium">Shift Table</a>
-            <div className="flex">
-              <a href="/" className="text-white text-lg mr-4">Home</a>
-              <a href="/contact" className="text-white text-lg mr-4">Contact</a>
-              <button id="logout-btn-auth" className="text-white text-lg mr-4 font-bold rounded-full hover:bg-slate-700">Logout</button>
+      <AuthProvider>
+        <body>
+          <nav className="bg-gray-800 p-6">
+            <div className="flex justify-between items-center">
+              <a href="/" className="text-white text-2xl font-medium">Shift Table</a>
+              <div className="flex">
+                <a href="/" className="text-white text-lg mr-4">Home</a>
+                <a href="/contact" className="text-white text-lg mr-4">Contact</a>
+                <button id="logout-btn-auth" className="text-white text-lg mr-4 font-bold rounded-full hover:bg-slate-700">Logout</button>
+              </div>
             </div>
-          </div>
-        </nav>
-        <main className={inter.className}>{children}</main>
-      </body>
+          </nav>
+          <main className={inter.className}>{children}</main>
+        </body>
+      </AuthProvider>
     </html>
   )
 }
