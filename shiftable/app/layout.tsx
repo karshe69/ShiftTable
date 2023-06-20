@@ -16,8 +16,8 @@ export default function RootLayout({
 }) {
   return (
     <html>
-      <AuthProvider>
-        <body>
+      <body>
+        <AuthProvider>
           <nav className="bg-gray-800 p-6">
             <div className="flex justify-between items-center">
               <a href="/" className="text-white text-2xl font-medium">Shift Table</a>
@@ -29,8 +29,8 @@ export default function RootLayout({
             </div>
           </nav>
           <main className={inter.className}>{children}</main>
-        </body>
-      </AuthProvider>
+        </AuthProvider>
+      </body>
     </html>
   )
 }
