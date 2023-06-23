@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 import { db } from "../firebase"
-import { collection, getDocs, where, query } from 'firebase/firestore'
+import { collection, getDocs, where, query, doc } from 'firebase/firestore'
 import { useAuth } from "@/context/AuthContext"
 
 export function useFetchTableList(permission) {
@@ -8,22 +8,25 @@ export function useFetchTableList(permission) {
     const [loading, setLoading] = useState(true)
     const [table, setTable] = useState(null)
     const [error, setError] = useState(null)
-    if (currentUser) {
-        const uid = currentUser.uid
-    }
     useEffect(() => {
         async function fetchTables() {
             try {
+                const uid = currentUser.uid
                 const tables = collection(db, "tables")
-                console.log(permission, "array-contains-any", uid);
-                console.log(tables);
-                let tablesDoc = query(tables, where(permission, "array-contains-any", uid))
-                console.log(321);
+                let tablesDoc = query(tables, where(permission, "array-contains", uid))
                 let tablesSnap = await getDocs(tablesDoc)
-                console.log(tablesSnap);
-                if (tablesSnap.exists()) {
-                    console.log(tablesSnap.data());
+                let tableArr = null
+                if (tablesSnap.size > 0) {
+                    tableArr = []
+                    let docname
+                    let docid
+                    tablesSnap.forEach((doc) => {
+                        docname = doc.data()["name"]
+                        docid = doc.id
+                        tableArr.push({ docname, docid })
+                    })
                 }
+                setTable(tableArr)
             } catch (err) {
                 setError('failed to load the list of avialable tables')
             } finally {
@@ -32,23 +35,5 @@ export function useFetchTableList(permission) {
         }
         fetchTables()
     }, [])
-    return { loading, table, error }
-}
-
-async function getTable(uid, setTable, permission) {
-    const tableArr = []
-    let docname
-    let docid
-    if (viewSnapshot.empty) {
-        setTable(null)
-        return
-    }
-    else {
-        viewSnapshot.forEach((doc) => {
-            docname = doc.data()["name"]
-            docid = doc.id
-            tableArr.push({ docname, docid })
-        });
-    }
-    setTable(tableArr)
+    return [ loading, table, error ]
 }
