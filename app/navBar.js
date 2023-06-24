@@ -9,7 +9,8 @@ export default function NavBar() {
     const [error, setError] = useState(null)
     const [isLoggingIn, setIsLoggingIn] = useState(true)
 
-    const { login, signup, logout, currentUser } = useAuth()
+    const { login, signup, logout } = useAuth()
+    let { currentUser } = useAuth()
 
     const [isOpen, setIsOpen] = useState(false);
 
@@ -20,6 +21,10 @@ export default function NavBar() {
     const closeSignin = () => {
         setIsOpen(false);
     };
+
+    async function logoutHandler() {
+        logout()
+    }
 
     async function submitHandler() {
         if (!email || !password) {
@@ -66,7 +71,7 @@ export default function NavBar() {
                         <a href="/" className="text-white text-lg mr-4">Home</a>
                         <a href="/contact" className="text-white text-lg mr-4">Contact</a>
                         {!currentUser && <button onClick={openSignin} className="text-white text-lg mr-4 font-bold rounded-full hover:bg-slate-700">login</button>}
-                        {currentUser && <button onClick={logout} className="text-white text-lg mr-4 font-bold rounded-full hover:bg-slate-700">logout</button>}
+                        {currentUser && <button onClick={logoutHandler} className="text-white text-lg mr-4 font-bold rounded-full hover:bg-slate-700">logout</button>}
                     </div>
                 </div>
             </nav>

@@ -6,7 +6,7 @@ import { collection, getDocs, where, query } from 'firebase/firestore'
 import { useAuth } from "@/context/AuthContext"
 
 export function useFetchTableList(permission) {
-    const { currentUser } = useAuth()
+    let { currentUser } = useAuth()
     const [loading, setLoading] = useState(true)
     const [table, setTable] = useState(null)
     const [error, setError] = useState(null)
@@ -30,6 +30,7 @@ export function useFetchTableList(permission) {
                 }
                 setTable(tableArr)
             } catch (err) {
+                console.log(err);
                 setError('failed to load the list of avialable tables')
             } finally {
                 setLoading(false)

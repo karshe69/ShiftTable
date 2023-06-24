@@ -15,6 +15,7 @@ export function useFetchTable(tableID) {
                 const tableSnap = await getDoc(tableRef)
                 setTable(tableSnap.data())
             } catch (err) {
+                console.log(err);
                 setError('failed to load the specific table')
             } finally {
                 setLoading(false)
