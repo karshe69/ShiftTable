@@ -37,5 +37,5 @@ export function useFetchTableList(permission) {
         }
         fetchTables()
     }, [])
-    return [loading, table, error]
+    return [ loading, table, error ]
 }
