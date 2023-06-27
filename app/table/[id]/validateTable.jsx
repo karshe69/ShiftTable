@@ -34,14 +34,14 @@ export default function ValidateTable({ children }) {
         }
         setNameState((table && name && size) || nameState)
     }, [tableLoading])
-    console.log(nameState, fullyState);
+    let valid = false
     if (fullyState && nameState) {
-        console.log(table);
+        valid = true
         //TODO set table to db
     }
     useEffect(() => {
-        setValidated(true)
-    }, []);
+        setValidated(valid)
+    }, [valid]);
     return (
         <>
             {(!nameState && !tableLoading) && <ValidateName>{{ setNameState, table, tableID }}</ValidateName>}
