@@ -2,9 +2,11 @@
 
 import { useState, useEffect } from "react"
 import { db } from "../firebase"
-import { collection, getDocs, query} from 'firebase/firestore'
+import { collection, getDocs, query } from 'firebase/firestore'
+import { useAuth } from "@/context/AuthContext"
 
 export function useFetchPeople(tableID) {
+    let { currentUser } = useAuth()
     const [loading, setLoading] = useState(true)
     const [people, setPeople] = useState(null)
     const [error, setError] = useState(null)
@@ -34,6 +36,6 @@ export function useFetchPeople(tableID) {
 
         }
         fetchTable()
-    }, [])
+    }, [currentUser])
     return [loading, people, error]
 }

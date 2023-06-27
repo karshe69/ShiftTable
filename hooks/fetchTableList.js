@@ -13,20 +13,22 @@ export function useFetchTableList(permission) {
     useEffect(() => {
         async function fetchTables() {
             try {
-                const uid = currentUser.uid
-                const tables = collection(db, "tables")
-                let tablesDoc = query(tables, where(permission, "array-contains", uid))
-                let tablesSnap = await getDocs(tablesDoc)
                 let tableArr = null
-                if (tablesSnap.size > 0) {
-                    tableArr = []
-                    let docname
-                    let docid
-                    tablesSnap.forEach((doc) => {
-                        docname = doc.data()["name"]
-                        docid = doc.id
-                        tableArr.push({ docname, docid })
-                    })
+                if (currentUser) {
+                    const uid = currentUser.uid
+                    const tables = collection(db, "tables")
+                    let tablesDoc = query(tables, where(permission, "array-contains", uid))
+                    let tablesSnap = await getDocs(tablesDoc)
+                    if (tablesSnap.size > 0) {
+                        tableArr = []
+                        let docname
+                        let docid
+                        tablesSnap.forEach((doc) => {
+                            docname = doc.data()["name"]
+                            docid = doc.id
+                            tableArr.push({ docname, docid })
+                        })
+                    }
                 }
                 setTable(tableArr)
             } catch (err) {
@@ -37,6 +39,6 @@ export function useFetchTableList(permission) {
             }
         }
         fetchTables()
-    }, [])
-    return [ loading, table, error ]
+    }, [currentUser])
+    return [loading, table, error]
 }
