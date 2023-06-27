@@ -1,10 +1,19 @@
+import { doc, setDoc} from 'firebase/firestore'
+import { db } from '@/firebase'
+
 export default function ValidateName({ children }) {
     let table = children.table
     let name = table.name
     let size = table.size
+    let tableID = children.tableID
     async function submitHandler() {
         table.name = name
         table.size = size
+        const tableRef = doc(db, "tables", tableID)
+        await setDoc(tableRef, {
+            'name': name,
+            'size': size
+        }, { merge: true })
         children.setNameState(true)
     }
     return (

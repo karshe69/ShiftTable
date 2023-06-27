@@ -16,7 +16,7 @@ export default function Home({ params }) {
 
     return (
         <main className="flex min-h-screen flex-col items-center p-24">
-            <ValidateTable>{{ table, tableLoading, setValidated }}</ValidateTable>
+            <ValidateTable>{{ table, tableLoading, setValidated, tableID }}</ValidateTable>
             <div className="flex justify-between py-6 h-3/4">
                 <div className="flex-wrap px-6"></div>
                 <div className="overflow-hidden shadow-md rounded-lg border-2 border-gray-700 h-full">
