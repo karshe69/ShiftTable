@@ -79,7 +79,7 @@ export function TableElem({ children }) {
                                 />}
                                 {!editable && rowTitles[index]}
                             </td>
-                            {Object.keys(personel).map((val) => (
+                            {Object.keys(personel).sort().map((val) => (
                                 <td key={val} className="rounded-md px-3 py-2">
                                     {editable && <input
                                         className="bg-transparent w-full"
@@ -89,6 +89,7 @@ export function TableElem({ children }) {
                                         placeholder="amount"
                                     />}
                                     {!editable && personel[val]}
+                                    {console.log(val)}
                                 </td>
                             ))}
                         </tr>

@@ -31,54 +31,54 @@ export default function ValidateFully({ children }) {
             if (typeof (table.personel[i]) !== 'object') {
                 bool = false
                 table.personel[i] = {
-                    sunday: 1,
-                    monday: 1,
-                    tuesday: 1,
-                    wednesday: 1,
-                    thursday: 1,
-                    friday: 1,
-                    saturday: 1
+                    "1sunday": 1,
+                    "2monday": 1,
+                    "3tuesday": 1,
+                    "4wednesday": 1,
+                    "5thursday": 1,
+                    "6friday": 1,
+                    "7saturday": 1
                 }
             }
-            if (typeof (table.personel[i].sunday) !== 'number') {
+            if (typeof (table.personel[i]["1sunday"]) !== 'number') {
                 bool = false
-                table.personel[i].sunday = 1
+                table.personel[i]["1sunday"] = 1
             }
-            if (typeof (table.personel[i].monday) !== 'number') {
+            if (typeof (table.personel[i]["2monday"]) !== 'number') {
                 bool = false
-                table.personel[i].monday = 1
+                table.personel[i]["2monday"] = 1
             }
-            if (typeof (table.personel[i].tuesday) !== 'number') {
+            if (typeof (table.personel[i]["3tuesday"]) !== 'number') {
                 bool = false
-                table.personel[i].tuesday = 1
+                table.personel[i]["3tuesday"] = 1
             }
-            if (typeof (table.personel[i].wednesday) !== 'number') {
+            if (typeof (table.personel[i]["4wednesday"]) !== 'number') {
                 bool = false
-                table.personel[i].wednesday = 1
+                table.personel[i]["4wednesday"] = 1
             }
-            if (typeof (table.personel[i].thursday) !== 'number') {
+            if (typeof (table.personel[i]["5thursday"]) !== 'number') {
                 bool = false
-                table.personel[i].thursday = 1
+                table.personel[i]["5thursday"] = 1
             }
-            if (typeof (table.personel[i].friday) !== 'number') {
+            if (typeof (table.personel[i]["6friday"]) !== 'number') {
                 bool = false
-                table.personel[i].friday = 1
+                table.personel[i]["6friday"] = 1
             }
-            if (typeof (table.personel[i].saturday) !== 'number') {
+            if (typeof (table.personel[i]["7saturday"]) !== 'number') {
                 bool = false
-                table.personel[i].saturday = 1
+                table.personel[i]["7saturday"] = 1
             }
         }
         if (table.personel.length != table.size) {
             for (let i = table.personel.length; i < table.size; i++) {
                 table.personel[i] = {
-                    sunday: 1,
-                    monday: 1,
-                    tuesday: 1,
-                    wednesday: 1,
-                    thursday: 1,
-                    friday: 1,
-                    saturday: 1
+                    "1sunday": 1,
+                    "2monday": 1,
+                    "3tuesday": 1,
+                    "4wednesday": 1,
+                    "5thursday": 1,
+                    "6friday": 1,
+                    "7saturday": 1
                 }
             }
             bool = false
