@@ -1,0 +1,2 @@
+TODO:
+    1) add days merge and removal in full validation

@@ -1,10 +1,14 @@
 'use client'
 
 import { useEffect, useState } from "react";
+import {TableElem} from "./tableElem";
+import { doc, setDoc} from 'firebase/firestore'
+import { db } from '@/firebase'
 
 export default function ValidateFully({ children }) {
     let table = children.table
     const [rerender, setRerender] = useState(true)
+    let tableID = children.tableID
 
     useEffect(() => {
         let bool = true
@@ -79,11 +83,21 @@ export default function ValidateFully({ children }) {
             }
             bool = false
         }
+        if(!table.days || !Array.isArray(table.personel)){
+            table.days = ["a","b","c","d","e","f","g"]
+            bool = false
+        }
         children.setFullyState(bool && rerender)
         setRerender(false)
     }, [rerender])
 
     async function submitHandler() {
+        const tableRef = doc(db, "tables", tableID)
+        await setDoc(tableRef, {
+            'days': table.days,
+            'personel': table.personel,
+            'titles': table.titles,
+        }, { merge: true })
         children.setFullyState(true)
     }
     return (
@@ -92,45 +106,7 @@ export default function ValidateFully({ children }) {
                 <div className="bg-white p-4 rounded-lg">
                     <div className='flex-1 text-sm p-2 flex flex-col justify-center items-center'>
                         <h1 className='font-extrabold select-none text-2xl sm:text-3xl uppercase'>register table</h1>
-                        <table className="bg-gray-100 border-collapse w-full h-full rounded-lg">
-                            <colgroup>
-                                <col className="" />
-                                <col className="border-x border-gray-600" />
-                                <col className="border-x border-gray-600" />
-                                <col className="border-x border-gray-600" />
-                                <col className="border-x border-gray-600" />
-                                <col className="border-x border-gray-600" />
-                                <col className="border-x border-gray-600" />
-                                <col className="" />
-                            </colgroup>
-                            <thead className="bg-gray-600 text-white text-center">
-                                <tr>
-                                    <th className="px-4 py-2">shifts</th>
-                                    <th className="px-4 py-2">sunday</th>
-                                    <th className="px-4 py-2">monday</th>
-                                    <th className="px-4 py-2">tuesday</th>
-                                    <th className="px-4 py-2">wednesday</th>
-                                    <th className="px-4 py-2">thursday</th>
-                                    <th className="px-4 py-2">friday</th>
-                                    <th className="px-4 py-2">saturday</th>
-                                </tr>
-                            </thead>
-                            {table.personel.map((personel, index) => (
-                                <tbody key={index} className="text-center">
-                                    <tr className="border-y border-gray-700">
-                                        <td className="rounded-md px-4 py-2">{table.titles[index]}</td>
-                                        <td className="rounded-md px-4 py-2">{personel.sunday}</td>
-                                        <td className="rounded-md px-4 py-2">{personel.monday}</td>
-                                        <td className="rounded-md px-4 py-2">{personel.tuesday}</td>
-                                        <td className="rounded-md px-4 py-2">{personel.wednesday}</td>
-                                        <td className="rounded-md px-4 py-2">{personel.thursday}</td>
-                                        <td className="rounded-md px-4 py-2">{personel.friday}</td>
-                                        <td className="rounded-md px-4 py-2">{personel.saturday}</td>
-                                    </tr>
-                                </tbody>
-                            ))}
-
-                        </table>
+                        <TableElem>{{columnTitles: table.days, table: table.personel, rowTitles: table.titles, editable:true}}</TableElem>
                         <button onClick={submitHandler} className="mt-4 bg-slate-800 hover:bg-slate-700 text-white font-bold py-2 px-4 rounded">submit</button>
                     </div>
                 </div>
