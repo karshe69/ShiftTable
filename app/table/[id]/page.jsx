@@ -3,23 +3,20 @@
 import ValidateTable from './validateTable';
 import { useFetchTable } from "@/hooks/fetchTable";
 import { useFetchPeople } from "@/hooks/fetchPeople";
+import { useState } from "react";
 
 
 export default function Home({ params }) {
     const tableID = params.id;
     const [tableLoading, table, tableError] = useFetchTable(tableID)
     const [peopleLoading, people, peopleError] = useFetchPeople(tableID)
-    if (table) {
-        console.log(table, "table");
-
-    }
-    if (people) {
-        console.log(people, "people");
-    }
+    const [validated, setValidated] = useState(false)
+    console.log(table, "table");
+    console.log(people, "people");
 
     return (
-        <main className="flex min-h-screen flex-col items-center justify-between p-24">
-            <ValidateTable>{tableID}</ValidateTable>
+        <main className="flex min-h-screen flex-col items-center p-24">
+            <ValidateTable>{{ table, tableLoading, setValidated }}</ValidateTable>
             <div className="flex justify-between py-6 h-3/4">
                 <div className="flex-wrap px-6"></div>
                 <div className="overflow-hidden shadow-md rounded-lg border-2 border-gray-700 h-full">
