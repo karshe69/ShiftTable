@@ -34,6 +34,7 @@ export default function ValidateTable({ children }) {
         setNameState((table && name && size) || nameState)
         let bool = false
         if (table && nameState) {
+            console.log(111);
             bool = true
             if (!table.titles) {
                 bool = false
@@ -45,12 +46,15 @@ export default function ValidateTable({ children }) {
                     table.titles[i] = ""
                 }
             }
-            if (!table.personel) {
+            if (!table.personel || typeof (table.personel) !== 'array') {
                 bool = false
                 table.personel = []
             }
+            console.log(555, table.personel.length, table.personel);
             for (let i = 0; i < table.personel.length; i++) {
+                console.log(table.personel[i], typeof (table.personel[i]), 666);
                 if (typeof (table.personel[i]) !== 'object') {
+                    console.log(123);
                     bool = false
                     table.personel[i] = {}
                 }
