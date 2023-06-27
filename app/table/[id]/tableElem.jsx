@@ -89,7 +89,6 @@ export function TableElem({ children }) {
                                         placeholder="amount"
                                     />}
                                     {!editable && personel[val]}
-                                    {console.log(val)}
                                 </td>
                             ))}
                         </tr>

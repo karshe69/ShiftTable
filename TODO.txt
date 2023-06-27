@@ -1,2 +1,3 @@
 TODO:
     1) add days merge and removal in full validation
+    2) add a fix for when the table is larger than the size it should be in full validation

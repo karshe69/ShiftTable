@@ -70,6 +70,9 @@ export default function ValidateFully({ children }) {
             }
         }
         if (table.personel.length != table.size) {
+            if (table.personel.length > table.size) {
+                console.log("woonk woonk");
+            }
             for (let i = table.personel.length; i < table.size; i++) {
                 table.personel[i] = {
                     "1sunday": 1,
