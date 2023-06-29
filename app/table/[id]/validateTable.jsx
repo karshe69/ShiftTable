@@ -13,7 +13,6 @@ export default function ValidateTable({ children }) {
     let size = null
     let tableID = children.tableID
     let table = children.table
-    let tableLoading = children.tableLoading
     let setValidated = children.setValidated
     useEffect(() => {
         if (table && !nameState) {
@@ -35,18 +34,16 @@ export default function ValidateTable({ children }) {
         }
         setNameState((table && name && size) || nameState)
         calculating = false
-    }, [tableLoading])
+    }, [])
     let valid = false
     if (fullyState && nameState) {
         valid = true
     }
-    useEffect(() => {
-        setValidated(valid)
-    }, [valid]);
+    setValidated(valid)
     return (
         <>
-            {(!nameState && !tableLoading && !calculating) && <ValidateName>{{ setNameState, table, tableID }}</ValidateName>}
-            {(!fullyState && nameState && !tableLoading) && <ValidateFully>{{ setFullyState, table, tableID }}</ValidateFully>}
+            {(!nameState && !calculating) && <ValidateName>{{ setNameState, table, tableID }}</ValidateName>}
+            {(!fullyState && nameState) && <ValidateFully>{{ setFullyState, table, tableID }}</ValidateFully>}
         </>
     )
 }
