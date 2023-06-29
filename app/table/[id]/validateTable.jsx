@@ -8,6 +8,7 @@ import ValidateName from "./validateName"
 export default function ValidateTable({ children }) {
     const [nameState, setNameState] = useState(false)
     const [fullyState, setFullyState] = useState(false)
+    let calculating = true
     let name = null
     let size = null
     let tableID = children.tableID
@@ -33,18 +34,18 @@ export default function ValidateTable({ children }) {
             }
         }
         setNameState((table && name && size) || nameState)
+        calculating = false
     }, [tableLoading])
     let valid = false
     if (fullyState && nameState) {
         valid = true
-        //TODO set table to db
     }
     useEffect(() => {
         setValidated(valid)
     }, [valid]);
     return (
         <>
-            {(!nameState && !tableLoading) && <ValidateName>{{ setNameState, table, tableID }}</ValidateName>}
+            {(!nameState && !tableLoading && !calculating) && <ValidateName>{{ setNameState, table, tableID }}</ValidateName>}
             {(!fullyState && nameState && !tableLoading) && <ValidateFully>{{ setFullyState, table, tableID }}</ValidateFully>}
         </>
     )

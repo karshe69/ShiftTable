@@ -46,7 +46,7 @@ export function TableElem({ children }) {
     }
     return (
         <>
-            <table className="bg-gray-100 border-collapse w-full h-full rounded-lg">
+            <table className="bg-gray-100 border-collapse w-1/2 h-full rounded-lg">
                 <colgroup>
                     <col className="" />
                     <col className="border-x border-gray-600" />
