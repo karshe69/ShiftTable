@@ -8,7 +8,6 @@ export function ValidatePeople({ children }) {
     let people = children.people
     let tableID = children.tableID
     useEffect(() => {
-        let bool = true
         people.forEach((element, index) => {
             if (typeof (element.docname) !== "string") {
                 const docRef = doc(db, "tables", tableID, "people", element.docid)
@@ -22,13 +21,11 @@ export function ValidatePeople({ children }) {
                 element.tempReservs = []
             }
         });
-        if (people.isEmpty) {
-            //TODO
+        let bool = false
+        if (people.length != 0) {
+            bool = true
         }
         children.setValid(bool)
     }, [])
-    return (
-        <>
-        </>
-    )
+    children.setLoading(false)
 }

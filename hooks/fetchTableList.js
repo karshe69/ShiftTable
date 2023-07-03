@@ -24,6 +24,7 @@ export function useFetchTableList(permission) {
                         let docname
                         let docid
                         tablesSnap.forEach((doc) => {
+                            console.log(doc.id);
                             docname = doc.data()["name"]
                             docid = doc.id
                             tableArr.push({ docname, docid })

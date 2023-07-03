@@ -2,13 +2,13 @@
 
 import { useState, useEffect } from "react";
 import ValidateFully from "./validateFully"
-import ValidateName from "./validateName"
+import EditName from "./editName"
 
 
 export default function ValidateTable({ children }) {
     const [nameState, setNameState] = useState(false)
     const [fullyState, setFullyState] = useState(false)
-    let calculating = true
+    const [calculating, setCalculating] = useState(true)
     let name = null
     let size = null
     let tableID = children.tableID
@@ -33,17 +33,22 @@ export default function ValidateTable({ children }) {
             }
         }
         setNameState((table && name && size) || nameState)
-        calculating = false
+        setCalculating(false)
     }, [])
     let valid = false
     if (fullyState && nameState) {
         valid = true
     }
-    setValidated(valid)
+    useEffect(() => {
+        setValidated(valid)
+    }, [valid])
     return (
         <>
-            {(!nameState && !calculating) && <ValidateName>{{ setNameState, table, tableID }}</ValidateName>}
-            {(!fullyState && nameState) && <ValidateFully>{{ setFullyState, table, tableID }}</ValidateFully>}
+            {(!nameState && !calculating) && <EditName>{{ setNameState, table, tableID }}</EditName>}
+            {(!fullyState && nameState && !calculating) && <ValidateFully>{{ setFullyState, table, tableID }}</ValidateFully>}
+            {calculating && <div className='py-6 px-12'>
+                <i className="fa-solid fa-spinner text-4xl animate-spin"></i>
+            </div>}
         </>
     )
 }
