@@ -26,6 +26,6 @@ export function ValidatePeople({ children }) {
             bool = true
         }
         children.setValid(bool)
+        children.setLoading(false)
     }, [])
-    children.setLoading(false)
 }

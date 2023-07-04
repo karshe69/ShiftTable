@@ -8,8 +8,7 @@ export function PeopleElem({ children }) {
     const [loading, setLoading] = useState(true)
     const [peopleLoading, people, peopleError] = useFetchPeople(tableID)
     const [valid, setValid] = useState(false)
-    const [edit, setEdit] = useState(false)
-    console.log(people, "people");
+    const [edit, setEdit] = useState(true)
     return (
         <>
             {!peopleLoading && <ValidatePeople>{{ people, setValid, setLoading, tableID }}</ValidatePeople>}
