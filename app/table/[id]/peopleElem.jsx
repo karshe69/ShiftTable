@@ -4,6 +4,8 @@ import { EditPeople } from "./editPeople"
 import { useState } from "react"
 
 export function PeopleElem({ children }) {
+    let days = children.days
+    let titles = children.titles
     const tableID = children.tableID
     const [loading, setLoading] = useState(true)
     const [peopleLoading, people, peopleError] = useFetchPeople(tableID)
@@ -13,7 +15,7 @@ export function PeopleElem({ children }) {
         <>
             {!peopleLoading && <ValidatePeople>{{ people, setValid, setLoading, tableID }}</ValidatePeople>}
             {valid && <h1>LIST OF PEOPLE HERE</h1>}
-            {(!loading && (!valid || edit)) && <EditPeople>{{ people, setValid, tableID, setEdit }}</EditPeople>}
+            {(!loading && (!valid || edit)) && <EditPeople>{{ people, setValid, tableID, setEdit, days, titles }}</EditPeople>}
             {loading && <div className='py-6 px-12'>
                 <i className="fa-solid fa-spinner text-4xl animate-spin"></i>
             </div>}
