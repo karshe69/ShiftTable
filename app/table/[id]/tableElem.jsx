@@ -65,9 +65,9 @@ export function TableElem({ children }) {
                         ))}
                     </tr>
                 </thead>
-                {table.map((personel, index) => (
-                    <tbody key={index} className="text-center">
-                        <tr className="border-y border-gray-700">
+                <tbody className="text-center">
+                    {table.map((personel, index) => (
+                        <tr key={index} className="border-y border-gray-700">
                             <td className="rounded-md px-4 py-2">
                                 {editable && <input
                                     className="bg-transparent"
@@ -92,8 +92,8 @@ export function TableElem({ children }) {
                                 </td>
                             ))}
                         </tr>
-                    </tbody>
-                ))}
+                    ))}
+                </tbody>
             </table>
         </>
     )

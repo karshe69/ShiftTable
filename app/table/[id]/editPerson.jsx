@@ -10,7 +10,7 @@ export function EditPerson({ children }) {
     let titles = children.titles
     let person = children.person
     console.log(days, titles);
-    const [name, setName] = useState(null)
+    const [name, setName] = useState('')
     const [show, setShow] = useState(false)
     const [paint, setPaint] = useState([])
 
@@ -40,7 +40,7 @@ export function EditPerson({ children }) {
                         <div className="flex justify-between w-full items-center h-full py-2">
                             <ul className="gap-6 flex flex-col content-between py-2">
                                 {titles.map((title, index) => (
-                                    <li key={index} className="flex" onClick={(e) => handleCheck(e)}>
+                                    <li key={colors[index]} className="flex" onClick={(e) => handleCheck(e)}>
                                         <input type="checkbox" id={colors[index]} value={colors[index]} className="hidden peer" required=""></input>
                                         <label htmlFor={colors[index]} className={"inline-flex items-center justify-between w-min h-min p-2 text-gray-500 bg-white border-2 rounded-lg cursor-pointer border-" + colors[index] + "-600 peer-checked:bg-" + colors[index] + "-600"}></label>
                                         <label className="font-bold text-sm">{title}</label>
@@ -53,7 +53,7 @@ export function EditPerson({ children }) {
                                 </li>
                             </ul>
                             <div className="w-full h-full items-center justify-center text-center">
-                                {show && <MonthlyTable>{{ person }}</MonthlyTable>}
+                                {show && <MonthlyTable>{{ person, show }}</MonthlyTable>}
                             </div>
                         </div>
                     </div>

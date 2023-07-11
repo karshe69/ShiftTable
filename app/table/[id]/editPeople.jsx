@@ -37,11 +37,11 @@ export function EditPeople({ children }) {
 
     return (
         <div className="z-40 fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-            <div className="bg-slate-200 p-2 rounded-lg w-11/12">
-                <div className='flex-1 text-sm p-2 flex flex-col justify-center items-center'>
-                    <h1 className='font-extrabold text-2xl uppercase p-5'>Edit People</h1>
-                    <div className="flex justify-between w-full px-4 divide-x-2 divide-gray-600">
-                        <div className="justify-center space-y-2 p-3">
+            <div className="bg-slate-200 p-2 rounded-lg w-11/12 h-[87%]">
+                <div className='flex-1 text-sm p-2 flex flex-col justify-center items-center h-full'>
+                    <h1 className='font-extrabold text-2xl uppercase pt-5'>Edit People</h1>
+                    <div className="flex justify-between w-full items-center divide-x-2 divide-gray-600 h-full">
+                        <div className="justify-center space-y-2 p-3 h-[80%]">
                             <h2 className="text-xl whitespace-nowrap font-bold">List Of People</h2>
                             <ul className="grid gap-6 md:grid-rows-2">
                                 {people.map((person, i) => (
@@ -59,7 +59,7 @@ export function EditPeople({ children }) {
                                 </li>
                             </ul>
                         </div>
-                        <div className="justify-center flex w-full space-y-2 py-2 pl-4">
+                        <div className="justify-center flex w-full h-full space-y-2 py-2 pl-4">
                             {(index != -1) && <EditPerson>{{ person, days, titles }}</EditPerson>}
                         </div>
                     </div>
