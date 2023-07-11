@@ -18,7 +18,7 @@ export function EditTableSetup({ children }) {
 
     return (
         <div className="z-40 fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-            <div className="bg-white p-2 rounded-lg">
+            <div className="bg-slate-300 p-2 rounded-lg">
                 <div className='flex-1 text-sm p-2 flex flex-col justify-center items-center'>
                     <h1 className='font-extrabold text-3xl uppercase p-5'>register table</h1>
                     <h3 className="text-xl">type in the cells the amount of people you want in each shift</h3>
