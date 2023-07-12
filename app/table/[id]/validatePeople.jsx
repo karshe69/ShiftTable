@@ -14,11 +14,11 @@ export function ValidatePeople({ children }) {
                 deleteDoc(docRef)
                 people.splice(index, 1)
             }
-            if (!Array.isArray(element.permReservs)) {
-                element.permReservs = []
+            if (!element.permReservs || !(Object.getPrototypeOf(element.permReservs) == Object.prototype)) {
+                element.permReservs = {}
             }
-            if (!Array.isArray(element.tempReservs)) {
-                element.tempReservs = []
+            if (!element.tempReservs || !(Object.getPrototypeOf(element.tempReservs) == Object.prototype)) {
+                element.tempReservs = {}
             }
         });
         let bool = false

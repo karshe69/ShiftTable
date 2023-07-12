@@ -3,29 +3,17 @@
 import { useState, useEffect } from "react"
 import { MonthlyTable } from './monthlyTable'
 
-let colors = ["green", "red", "blue", "violet", "orange", "yellow", "teal"]
-
 export function EditPerson({ children }) {
     let days = children.days
     let titles = children.titles
     let person = children.person
-    console.log(days, titles);
+    console.log(days);
     const [name, setName] = useState('')
     const [show, setShow] = useState(false)
-    const [paint, setPaint] = useState([])
 
     useEffect(() => {
         setName(person.docname)
     }, [person.docname])
-
-    async function handleCheck(event) {
-        if (event.target.checked) {
-            setPaint(paint => [...paint, event.target.value]);
-        }
-        else {
-            setPaint(paint.filter(color => color != event.target.value))
-        }
-    }
 
     return (
         <div className="text-lg justify-center items-center w-full relative">
@@ -38,22 +26,8 @@ export function EditPerson({ children }) {
                     <div className="items-center flex-row w-full h-full">
                         <h2 className="font-bold">color the spots where the person ISN'T available</h2>
                         <div className="flex justify-between w-full items-center h-full py-2">
-                            <ul className="gap-6 flex flex-col content-between py-2">
-                                {titles.map((title, index) => (
-                                    <li key={colors[index]} className="flex" onClick={(e) => handleCheck(e)}>
-                                        <input type="checkbox" id={colors[index]} value={colors[index]} className="hidden peer" required=""></input>
-                                        <label htmlFor={colors[index]} className={"inline-flex items-center justify-between w-min h-min p-2 text-gray-500 bg-white border-2 rounded-lg cursor-pointer border-" + colors[index] + "-600 peer-checked:bg-" + colors[index] + "-600"}></label>
-                                        <label className="font-bold text-sm">{title}</label>
-                                    </li>
-                                ))}
-                                <li className="flex" onClick={(e) => handleCheck(e)}>
-                                    <input type="checkbox" id={colors[titles.length]} value={colors[titles.length]} className="hidden peer" required=""></input>
-                                    <label htmlFor={colors[titles.length]} className={"inline-flex items-center justify-between w-min h-min p-2 text-gray-500 bg-white border-2 rounded-lg cursor-pointer border-" + colors[titles.length] + "-600 peer-checked:bg-" + colors[titles.length] + "-600"}></label>
-                                    <label className="font-bold text-sm">all</label>
-                                </li>
-                            </ul>
                             <div className="w-full h-full items-center justify-center text-center">
-                                {show && <MonthlyTable>{{ person, show }}</MonthlyTable>}
+                                {show && <MonthlyTable>{{ person, show, titles }}</MonthlyTable>}
                             </div>
                         </div>
                     </div>
@@ -75,3 +49,6 @@ export function EditPerson({ children }) {
         </div>
     )
 }
+
+//< div className="border-green-600 border-red-600 border-blue-600 border-violet-600 border-orange-600 border-yellow-600 border-teal-600" ></div>
+// < div className="peer-checked:bg-green-600 peer-checked:bg-red-600 peer-checked:bg-blue-600 peer-checked:bg-violet-600 peer-checked:bg-orange-600 peer-checked:bg-yellow-600 peer-checked:bg-teal-600" ></div>
