@@ -26,7 +26,7 @@ export function useFetchPeople(tableID) {
                         docname = doc.data()["name"]
                         docid = doc.id
                         permReservs = doc.data()["perms"]
-                        tempReservs = doc.data()["temp"]
+                        tempReservs = doc.data()["temps"]
                         peopleArr.push({ docname, docid, permReservs, tempReservs })
                     })
                 }

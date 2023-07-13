@@ -1,5 +1,6 @@
 'use client'
 
+import { eventNames } from "process";
 import { useState, useEffect } from "react"
 
 const colors = ["green", "red", "blue", "violet", "orange", "yellow", "teal"]
@@ -38,13 +39,17 @@ export function MonthlyTable({ children }) {
         })
     }
 
-    async function handleCheck(event) {
+    async function handleCheck(event, color) {
         if (event.target.checked) {
-            setPaint(paint => [...paint, event.target.value]);
+            setPaint(paint => [...paint, color]);
         }
         else {
-            setPaint(paint.filter(color => color != event.target.value))
+            setPaint(paint.filter(colour => colour != color))
         }
+    }
+
+    async function colorTable(event) {
+        console.log(event);
     }
 
     async function getMonthDays(amountOfDays, firstDay) {
@@ -78,17 +83,17 @@ export function MonthlyTable({ children }) {
                 <div className="h-full w-full flex flex-row justify-center">
                     <ul className="gap-6 flex flex-col content-between justify-center">
                         {titles.map((title, index) => (
-                            <li key={colors[index]} className="flex justify-start items-center" onClick={(e) => handleCheck(e)}>
+                            <li key={colors[index]} className="flex justify-start items-center" onClick={(e) => handleCheck(e, index)}>
                                 <input type="checkbox" id={colors[index]} value={colors[index]} className="hidden peer" required=""></input>
                                 <label htmlFor={colors[index]} className={"inline-flex items-center justify-between w-min h-min p-2 text-gray-500 bg-white border-2 rounded-lg cursor-pointer border-" + colors[index] + "-600 peer-checked:bg-" + colors[index] + "-600"}></label>
                                 <label className="font-bold text-sm text-left pl-1">{title}</label>
                             </li>
                         ))}
-                        <li className="flex" onClick={(e) => handleCheck(e)}>
+                        {/* <li className="flex" onClick={(e) => handleCheck(e, titles.length)}>
                             <input type="checkbox" id={colors[titles.length]} value={colors[titles.length]} className="hidden peer" required=""></input>
                             <label htmlFor={colors[titles.length]} className={"inline-flex items-center justify-between w-min h-min p-2 text-gray-500 bg-white border-2 rounded-lg cursor-pointer border-" + colors[titles.length] + "-600 peer-checked:bg-" + colors[titles.length] + "-600"}></label>
                             <label className="font-bold text-sm">all</label>
-                        </li>
+                        </li> */}
                     </ul>
                     <table className="h-full w-full">
                         <tbody>
@@ -97,14 +102,19 @@ export function MonthlyTable({ children }) {
                                     {row.map((val, jndex) => (
                                         <>
                                             {(val > 0) &&
-                                                <td key={jndex} className="border">
+                                                < td key={jndex} className="border" about="123" onClick={(e) => colorTable(e.target)}>
                                                     <div className="h-full w-full relative flex">
-                                                        <h2 className="z-40 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 font-bold text-xl">{val}</h2>
-                                                        <div className="bg-green-500 h-full w-full"></div>
-                                                        <div className="bg-blue-500 h-full w-full"></div>
-                                                        <div className="bg-red-500 h-full w-full"></div>
+                                                        <h2 className="z-40 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 font-bold text-xl" value={val + months[month] + year}>{val}</h2>
+                                                        {(show == 'perm' && person.permReservs[val + months[month] + year]) &&
+                                                            person.permReservs[val + months[month] + year].split("").map((color) => (
+                                                                <div className={"w-full h-full bg-" + colors[color] + "-600"}></div>
+                                                            ))}
+                                                        {(show == 'temp' && person.tempReservs[val + months[month] + year]) &&
+                                                            person.tempReservs[val + months[month] + year].split("").map((color) => (
+                                                                <div className={"w-full h-full bg-" + colors[color] + "-600"}></div>
+                                                            ))}
                                                     </div>
-                                                </td>
+                                                </td >
                                             }
                                             {(val <= 0) &&
                                                 <td key={jndex}></td>
@@ -118,7 +128,11 @@ export function MonthlyTable({ children }) {
                         </tbody>
                     </table>
                 </div>
-            </div>
+            </div >
         </>
     )
 }
+
+//< div className="border-green-600 border-red-600 border-blue-600 border-violet-600 border-orange-600 border-yellow-600 border-teal-600" ></div>
+// < div className="peer-checked:bg-green-600 peer-checked:bg-red-600 peer-checked:bg-blue-600 peer-checked:bg-violet-600 peer-checked:bg-orange-600 peer-checked:bg-yellow-600 peer-checked:bg-teal-600" ></div>
+// < div className="peer-checked:bg-green-600 peer-checked:bg-red-600 peer-checked:bg-blue-600 bg-violet-600 bg-orange-600 bg-yellow-600 bg-teal-600" ></div>

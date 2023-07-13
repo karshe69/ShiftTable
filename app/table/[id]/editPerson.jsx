@@ -49,6 +49,3 @@ export function EditPerson({ children }) {
         </div>
     )
 }
-
-//< div className="border-green-600 border-red-600 border-blue-600 border-violet-600 border-orange-600 border-yellow-600 border-teal-600" ></div>
-// < div className="peer-checked:bg-green-600 peer-checked:bg-red-600 peer-checked:bg-blue-600 peer-checked:bg-violet-600 peer-checked:bg-orange-600 peer-checked:bg-yellow-600 peer-checked:bg-teal-600" ></div>
