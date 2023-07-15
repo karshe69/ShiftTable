@@ -68,21 +68,21 @@ export function EditPeople({ children }) {
         <div className="z-40 fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
             <div className="bg-slate-200 p-2 rounded-lg w-11/12 h-[87%]">
                 <div className='flex-1 text-sm px-2 pb-6 flex flex-col justify-center items-center h-full'>
-                    <h1 className='font-extrabold text-2xl uppercase pt-5'>Edit People</h1>
+                    <h1 className='font-extrabold text-4xl uppercase pt-5'>Edit People</h1>
                     <div className="flex py-4 justify-between w-full items-center divide-x-2 divide-gray-600 h-full">
                         <div className="space-y-2 p-3 h-[80%] flex flex-col">
-                            <h2 className="text-xl whitespace-nowrap font-bold">List Of People</h2>
+                            <h2 className="text-3xl whitespace-nowrap font-bold">List Of People</h2>
                             <ul className="relative grid gap-6 overflow-x-hidden overflow-y-auto whitespace-nowrap scroll-smooth max-h-full">
                                 {people.map((person, i) => (
                                     <li key={i} onClick={(e) => clickPerson(i)} className="inline-flex">
                                         <input type="radio" id={"person" + i} name="hosting" value={"person" + i} className="hidden peer" required></input>
-                                        <label htmlFor={"person" + i} className="text-lg font-semibold w-full p-3 rounded-lg cursor-pointer peer-checked:bg-slate-400 hover:bg-slate-300">{person.name}</label>
+                                        <label htmlFor={"person" + i} className="text-2xl font-semibold w-full p-3 rounded-lg cursor-pointer peer-checked:bg-slate-400 hover:bg-slate-300">{person.name}</label>
                                     </li>
                                 ))}
                             </ul>
                             <div onClick={(e) => newPerson()}>
                                 <input type="radio" id={"newperson"} name="hosting" value={"newperson"} className="hidden peer" required></input>
-                                <label htmlFor={"newperson"} className="text-lg font-semibold inline-flex items-center justify-between w-full p-3 rounded-lg cursor-pointer peer-checked:bg-slate-300 hover:bg-slate-300">
+                                <label htmlFor={"newperson"} className="text-2xl font-semibold inline-flex items-center justify-between w-full p-3 rounded-lg cursor-pointer peer-checked:bg-slate-300 hover:bg-slate-300">
                                     <i className="fa-solid fa-plus pr-2 pt-1"></i>
                                     <h3>New Person</h3>
                                 </label>

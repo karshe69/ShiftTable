@@ -23,7 +23,7 @@ export default function Home({ params }) {
                     <div className='flex-row flex space-x-3'>
                         <h1 className='font-bold text-5xl'>{table.name}</h1>
                         <div className='relative'>
-                            <i className="fa-solid fa-pen-nib text-2xl cursor-pointer absolute bottom-0" onClick={(e) => setNameState(false)}></i>
+                            <i className="fa-solid fa-pen-to-square text-2xl cursor-pointer absolute bottom-0" onClick={(e) => setNameState(false)}></i>
                         </div>
                     </div>
                     <div className="flex justify-between py-20">
@@ -32,7 +32,7 @@ export default function Home({ params }) {
                         {!fullyState && <EditTableSetup>{{ table, setFullyState, tableID }}</EditTableSetup>}
                         {validated &&
                             <div>
-                                <i className="fa-solid fa-pen-nib text-2xl cursor-pointer" onClick={(e) => setFullyState(false)}></i>
+                                <i className="fa-solid fa-pen-to-square text-2xl cursor-pointer" onClick={(e) => setFullyState(false)}></i>
                                 <div className='pl-6 pt-2'>
                                     <TableElem>{{ columnTitles: table.days, table: table.personel, rowTitles: table.titles, editable: false }}</TableElem>
                                 </div>
