@@ -9,8 +9,8 @@ export function ValidatePeople({ children }) {
     let tableID = children.tableID
     useEffect(() => {
         people.forEach((element, index) => {
-            if (typeof (element.docname) !== "string") {
-                const docRef = doc(db, "tables", tableID, "people", element.docid)
+            if (typeof (element.name) !== "string") {
+                const docRef = doc(db, "tables", tableID, "people", element.id)
                 deleteDoc(docRef)
                 people.splice(index, 1)
             }

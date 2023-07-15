@@ -1,33 +1,35 @@
 'use client'
 
-import { useState, useEffect } from "react"
+import { useState} from "react"
 import { MonthlyTable } from './monthlyTable'
 
 export function EditPerson({ children }) {
     let days = children.days
     let titles = children.titles
     let person = children.person
-    console.log(days);
-    const [name, setName] = useState('')
+    let setPerson = children.setPerson
+    const [rerender, setRerender] = useState(false)
     const [show, setShow] = useState(false)
 
-    useEffect(() => {
-        setName(person.docname)
-    }, [person.docname])
+    async function ChangeName(val){
+        person.name = val
+        setPerson(person)
+        setRerender(!rerender)
+    }
 
     return (
-        <div className="text-lg justify-center items-center w-full relative">
-            <div className="justify-center">
+        <div className="text-lg justify-center items-center w-full relative flex flex-col">
+            <div className="justify-start w-full">
                 <i className="fa-solid fa-pen-to-square text-sm"></i>
-                <input type="string" value={name} onChange={(e) => setName(e.target.value)} placeholder='name' className='outline-none bg-inherit text-slate-900 placeholder:text-slate-600 p-2 text-left w-auto inline-block font-bold' />
+                <input type="string" value={person.name} onChange={(e) => ChangeName(e.target.value)} placeholder='name' className='outline-none bg-inherit text-slate-900 placeholder:text-slate-600 p-2 text-left w-auto inline-block font-bold' />
             </div>
-            <div className="flex w-full justify-between h-5/6 px-2">
+            <div className="flex w-full justify-between h-full px-2">
                 <div className="px-4 flex justify-between items-center w-full">
-                    <div className="items-center flex-row w-full h-full">
+                    <div className="items-center flex flex-col w-full h-full">
                         <h2 className="font-bold">color the spots where the person ISN'T available</h2>
-                        <div className="flex justify-between w-full items-center h-full py-2">
+                        <div className="flex justify-between w-full items-center h-full">
                             <div className="w-full h-full items-center justify-center text-center">
-                                {show && <MonthlyTable>{{ person, show, titles }}</MonthlyTable>}
+                                {show && <MonthlyTable>{{ person, show, titles, setPerson }}</MonthlyTable>}
                             </div>
                         </div>
                     </div>

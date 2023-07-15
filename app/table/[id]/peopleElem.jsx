@@ -10,11 +10,21 @@ export function PeopleElem({ children }) {
     const [loading, setLoading] = useState(true)
     const [peopleLoading, people, peopleError] = useFetchPeople(tableID)
     const [valid, setValid] = useState(false)
-    const [edit, setEdit] = useState(true)
+    const [edit, setEdit] = useState(false)
+    const [nameState, setNameState] = useState(false)
+    const [fullyState, setFullyState] = useState(false)
+
     return (
         <>
             {!peopleLoading && <ValidatePeople>{{ people, setValid, setLoading, tableID }}</ValidatePeople>}
-            {valid && <h1>LIST OF PEOPLE HERE</h1>}
+            {valid &&
+                <div className="flex flex-col items-end">
+                    <i className="fa-solid fa-user-pen text-2xl cursor-pointer" onClick={(e) => setEdit(true)}></i>
+                    <div className="px-6 py-4">
+                        <h2>Personal</h2>
+                    </div>
+                </div>
+            }
             {(!loading && (!valid || edit)) && <EditPeople>{{ people, setValid, tableID, setEdit, days, titles }}</EditPeople>}
             {loading && <div className='py-6 px-12'>
                 <i className="fa-solid fa-spinner text-4xl animate-spin"></i>

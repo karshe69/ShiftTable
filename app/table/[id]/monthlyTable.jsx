@@ -1,22 +1,21 @@
 'use client'
 
-import { eventNames } from "process";
 import { useState, useEffect } from "react"
 
 const colors = ["green", "red", "blue", "violet", "orange", "yellow", "teal"]
 
 export function MonthlyTable({ children }) {
     let person = children.person
-    console.log(person);
     let show = children.show
-    console.log(show);
     let titles = children.titles
+    let setPerson = children.setPerson
     const currDate = new Date()
     const [month, setMonth] = useState(currDate.getMonth())
     const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
     const [year, setYear] = useState(currDate.getFullYear())
     const [days, setDays] = useState([[]])
     const [paint, setPaint] = useState([])
+    const [rerender, setRerender] = useState(false)
     useEffect(() => {
         getMonthDays(new Date(currDate.getFullYear(), currDate.getMonth() + 1, 0).getDate(), new Date(currDate.getFullYear(), currDate.getMonth(), 1).getDay()).then((data) => {
             setDays(data)
@@ -48,12 +47,38 @@ export function MonthlyTable({ children }) {
         }
     }
 
-    async function colorTable(event) {
-        console.log(event);
+    async function colorTable(date, show) {
+        if (paint.length === 0) {
+            return
+        }
+        let reservs
+        if (show == 'perm') {
+            reservs = person.permReservs
+        }
+        else {
+            reservs = person.tempReservs
+        }
+        let color = paint.join('')
+        if (reservs[date]) {
+            let bool = true
+            paint.map((color) => {
+                bool *= reservs[date].includes(color)
+                reservs[date] = reservs[date].replace(color, "");
+            })
+            if (!bool) {
+                reservs[date] += color
+                reservs[date] = reservs[date].split('').sort().join('');
+            }
+        }
+        else {
+            reservs[date] = color
+            reservs[date] = reservs[date].split('').sort().join('');
+        }
+        setPerson(person)
+        setRerender(!rerender)
     }
 
     async function getMonthDays(amountOfDays, firstDay) {
-        console.log(amountOfDays + " " + firstDay)
         let arr = []
         for (let i = 0; i < 6; i++) {
             if (i * 7 - firstDay >= amountOfDays) {
@@ -102,9 +127,10 @@ export function MonthlyTable({ children }) {
                                     {row.map((val, jndex) => (
                                         <>
                                             {(val > 0) &&
-                                                < td key={jndex} className="border" about="123" onClick={(e) => colorTable(e.target)}>
+                                                < td key={val + months[month] + year} className="border" onClick={(e) => colorTable(val + months[month] + year, show)}>
+                                                    <input htmlFor={val + months[month] + year} id={val + months[month] + year} value={val + months[month] + year} className="hidden peer" readOnly required=""></input>
                                                     <div className="h-full w-full relative flex">
-                                                        <h2 className="z-40 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 font-bold text-xl" value={val + months[month] + year}>{val}</h2>
+                                                        <h2 className="z-40 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 font-bold text-xl">{val}</h2>
                                                         {(show == 'perm' && person.permReservs[val + months[month] + year]) &&
                                                             person.permReservs[val + months[month] + year].split("").map((color) => (
                                                                 <div className={"w-full h-full bg-" + colors[color] + "-600"}></div>
@@ -135,4 +161,4 @@ export function MonthlyTable({ children }) {
 
 //< div className="border-green-600 border-red-600 border-blue-600 border-violet-600 border-orange-600 border-yellow-600 border-teal-600" ></div>
 // < div className="peer-checked:bg-green-600 peer-checked:bg-red-600 peer-checked:bg-blue-600 peer-checked:bg-violet-600 peer-checked:bg-orange-600 peer-checked:bg-yellow-600 peer-checked:bg-teal-600" ></div>
-// < div className="peer-checked:bg-green-600 peer-checked:bg-red-600 peer-checked:bg-blue-600 bg-violet-600 bg-orange-600 bg-yellow-600 bg-teal-600" ></div>
+// < div className="bg-green-600 bg-red-600 bg-blue-600 bg-violet-600 bg-orange-600 bg-yellow-600 bg-teal-600" ></div>

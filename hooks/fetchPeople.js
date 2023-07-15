@@ -18,16 +18,16 @@ export function useFetchPeople(tableID) {
                 let peopleArr = []
                 if (peopleSnap.size > 0) {
                     peopleArr = []
-                    let docname
-                    let docid
+                    let name
+                    let id
                     let permReservs
                     let tempReservs
                     peopleSnap.forEach((doc) => {
-                        docname = doc.data()["name"]
-                        docid = doc.id
-                        permReservs = doc.data()["perms"]
-                        tempReservs = doc.data()["temps"]
-                        peopleArr.push({ docname, docid, permReservs, tempReservs })
+                        name = doc.data()["name"]
+                        id = doc.id
+                        permReservs = doc.data()["permReservs"]
+                        tempReservs = doc.data()["tempReservs"]
+                        peopleArr.push({ name, id, permReservs, tempReservs })
                     })
                 }
                 setPeople(peopleArr)
