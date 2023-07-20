@@ -20,10 +20,10 @@ export default function Home({ params }) {
         <main className="min-h-screen px-24 py-14">
             {!tableLoading &&
                 <div>
-                    <div className='flex-row flex space-x-3'>
-                        <h1 className='font-bold text-5xl'>{table.name}</h1>
+                    <div className='flex-row flex space-x-2'>
+                        <h1 className='font-bold text-4xl'>{table.name}</h1>
                         <div className='relative'>
-                            <i className="fa-solid fa-pen-to-square text-2xl cursor-pointer absolute bottom-0" onClick={(e) => setNameState(false)}></i>
+                            <i className="fa-solid fa-pen-to-square text-xl cursor-pointer absolute bottom-0" onClick={(e) => setNameState(false)}></i>
                         </div>
                     </div>
                     <div className="flex justify-between py-20">
