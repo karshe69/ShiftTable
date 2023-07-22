@@ -26,7 +26,7 @@ export function EditPerson({ children }) {
             <div className="flex w-full justify-between h-full px-2">
                 <div className="px-4 flex justify-between items-center w-full">
                     <div className="items-center flex flex-col w-full h-full">
-                        <h2 className="font-bold pb-4">color the spots where the person ISN'T available</h2>
+                        <h2 className="font-bold pb-4">color the spots where the person ISN&apos;T available</h2>
                         <div className="flex justify-between w-full items-center h-full">
                             <div className="w-full h-full items-center justify-center text-center">
                                 {show && <MonthlyTable>{{ person, show, titles, setPerson }}</MonthlyTable>}

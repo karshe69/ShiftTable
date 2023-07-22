@@ -15,7 +15,7 @@ export default function Home() {
           ))
           }
         </div>}
-        {(!adminTable && !adminLoading) && <div>You don't have any tables here</div>}
+        {(!adminTable && !adminLoading) && <div>You don&apos;t have any tables here</div>}
         {adminLoading &&
           <div className='py-6 px-12'>
             <i className="fa-solid fa-spinner text-4xl animate-spin"></i>
@@ -26,7 +26,7 @@ export default function Home() {
             <a key={index} href={`/table/${table.docid}`} className="flex items-center justify-center bg-slate-100 hover:scale-105 ease-in-out min-w-[128px] w-[128px] h-[128px]">{table.docname}</a>
           ))
           }</div>}
-        {(!viewTable && !viewLoading) && <div>You don't have any tables here</div>}
+        {(!viewTable && !viewLoading) && <div>You don&apos;t have any tables here</div>}
         {viewLoading &&
           <div className='py-6 px-12'>
             <i className="fa-solid fa-spinner text-4xl animate-spin"></i>
