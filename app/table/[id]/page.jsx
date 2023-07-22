@@ -5,7 +5,7 @@ import { useFetchTable } from "@/hooks/fetchTable";
 import { useState } from "react";
 import { TableElem } from './tableElem';
 import { PeopleElem } from './peopleElem'
-import { EditName } from "./editName"
+import EditName  from "./editName"
 import { EditTableSetup } from './editTableSetup';
 
 

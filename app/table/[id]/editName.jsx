@@ -4,7 +4,7 @@ import { useState } from "react"
 import { doc, setDoc } from 'firebase/firestore'
 import { db } from '@/firebase'
 
-export function EditName({ children }) {
+export default function EditName({ children }) {
     let table = children.table
     const [name, setName] = useState(table.name)
     const [size, setSize] = useState(table.size)

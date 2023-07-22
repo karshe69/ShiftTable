@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import ValidateFully from "./validateFully"
-import { EditName } from "./editName"
+import EditName from "./editName"
 
 
 export default function ValidateTable({ children }) {
