@@ -11,8 +11,6 @@ export function PeopleElem({ children }) {
     const [peopleLoading, people, peopleError] = useFetchPeople(tableID)
     const [valid, setValid] = useState(false)
     const [edit, setEdit] = useState(false)
-    const [nameState, setNameState] = useState(false)
-    const [fullyState, setFullyState] = useState(false)
 
     return (
         <>
