@@ -128,11 +128,11 @@ export function MonthlyTable({ children }) {
                                                         <h2 className="z-40 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 font-bold text-2xl">{val}</h2>
                                                         {(show == 'perm' && person.permReservs[val + months[month] + year]) &&
                                                             person.permReservs[val + months[month] + year].split("").map((color) => (
-                                                                <div className={"w-full h-full bg-" + colors[color] + "-600"}></div>
+                                                                <div key={val + months[month] + year} className={"w-full h-full bg-" + colors[color] + "-600"}></div>
                                                             ))}
                                                         {(show == 'temp' && person.tempReservs[val + months[month] + year]) &&
                                                             person.tempReservs[val + months[month] + year].split("").map((color) => (
-                                                                <div className={"w-full h-full bg-" + colors[color] + "-600"}></div>
+                                                                <div key={val + months[month] + year} className={"w-full h-full bg-" + colors[color] + "-600"}></div>
                                                             ))}
                                                     </div>
                                                 </td >
