@@ -22,7 +22,7 @@ export function ValidatePeople({ children }) {
             }
         });
         let bool = false
-        if (people.length != 1) {
+        if (people.length >= 3) {
             bool = true
         }
         children.setValid(bool)

@@ -67,7 +67,7 @@ export function EditPeople({ children }) {
     return (
         <div className="z-40 fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
             <div className="flex bg-slate-200 p-2 rounded-lg w-11/12 h-[87%]">
-                <div className='text-sm px-2 pb-6 flex flex-col justify-center items-center h-full'>
+                <div className='text-sm px-2 pb-6 flex flex-col justify-center items-center h-full w-full'>
                     <h1 className='font-extrabold text-4xl uppercase pt-5'>Edit People</h1>
                     <div className="flex py-4 justify-between w-full items-center divide-x-2 divide-gray-600 h-full">
                         <div className="space-y-2 p-3 h-[80%] flex flex-col">

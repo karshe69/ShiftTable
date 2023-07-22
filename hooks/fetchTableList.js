@@ -8,12 +8,12 @@ import { useAuth } from "@/context/AuthContext"
 export function useFetchTableList(permission) {
     let { currentUser } = useAuth()
     const [loading, setLoading] = useState(true)
-    const [table, setTable] = useState(null)
+    const [table, setTable] = useState([])
     const [error, setError] = useState(null)
     useEffect(() => {
         async function fetchTables() {
             try {
-                let tableArr = null
+                let tableArr =  []
                 if (currentUser) {
                     const uid = currentUser.uid
                     const tables = collection(db, "tables")
