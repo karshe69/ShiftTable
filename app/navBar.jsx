@@ -2,7 +2,6 @@
 
 import { useAuth } from '../context/AuthContext'
 import React, { useState } from 'react'
-import {Popup} from '../components/Popup'
 
 export default function NavBar() {
     const [email, setEmail] = useState('')
