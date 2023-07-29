@@ -48,6 +48,11 @@ export function AuthProvider({ children }) {
     return (
         <AuthContext.Provider value={value}>
             {!loading && children}
+            {loading &&
+                <div>
+                    <i className="fa-solid fa-spinner text-7xl sm:text-9xl animate-spin"></i>
+                </div>
+            }
         </AuthContext.Provider>
     )
 }

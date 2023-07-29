@@ -18,7 +18,7 @@ export function EditTableSetup({ children }) {
 
     return (
         <div className="z-40 fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-            <div className="bg-slate-300 p-2 rounded-lg">
+            <div className="bg-bac p-2 rounded-lg bg-background">
                 <div className='flex-1 text-sm p-2 flex flex-col justify-center items-center'>
                     <h1 className='font-extrabold text-3xl uppercase p-5'>register table</h1>
                     <h3 className="text-xl">type in the cells the amount of people you want in each shift</h3>
@@ -26,7 +26,7 @@ export function EditTableSetup({ children }) {
                     <div className="py-5 justify-center flex">
                         <TableElem>{{ columnTitles: table.days, table: table.personel, rowTitles: table.titles, editable: true }}</TableElem>
                     </div>
-                    <button onClick={submitHandler} className="mt-4 bg-slate-800 hover:bg-slate-700 text-white font-bold py-2 px-4 rounded">submit</button>
+                    <button onClick={submitHandler} className="transition duration-300 bg-background_pop hover:bg-bg_prim font-bold py-2 px-4 rounded mt-4">submit</button>
                 </div>
             </div>
         </div>

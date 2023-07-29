@@ -105,12 +105,12 @@ export function MonthlyTable({ children }) {
                         <i className="fa-solid fa-caret-right pt-1 text-2xl" onClick={(e) => handleMonth(1)}></i>
                     </div>
                 </div>
-                <div className="h-full w-full flex flex-row justify-center">
+                <div className="h-full w-full flex flex-row justify-center p-2">
                     <ul className="gap-6 flex flex-col content-between justify-center pr-8">
                         {titles.map((title, index) => (
                             <li key={colors[index]} className="flex justify-start items-center" onClick={(e) => handleCheck(e, index)}>
                                 <input type="checkbox" id={colors[index]} value={colors[index]} className="hidden peer" required=""></input>
-                                <label htmlFor={colors[index]} className={"inline-flex items-center justify-between w-min h-min p-2 text-gray-500 bg-white border-2 rounded-lg cursor-pointer border-" + colors[index] + "-600 peer-checked:bg-" + colors[index] + "-600"}></label>
+                                <label htmlFor={colors[index]} className={"inline-flex items-center justify-between w-min h-min p-2 bg-inherit border-2 rounded-lg cursor-pointer border-" + colors[index] + "-600 peer-checked:bg-" + colors[index] + "-600"}></label>
                                 <label className="font-bold text-xl text-left pl-1">{title}</label>
                             </li>
                         ))}

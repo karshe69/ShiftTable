@@ -18,10 +18,10 @@ export default function RootLayout({ children, }: { children: React.ReactNode })
       <head>
         <script src="https://kit.fontawesome.com/1975b960c2.js" crossOrigin="anonymous"></script>
       </head>
-      <body>
+      <body className='from-background to-background_pop bg-gradient-to-b text-text min-h-screen flex flex-col'>
         <AuthProvider>
           <NavBar></NavBar>
-          <main className={inter.className}>{children}</main>
+          <main className={inter.className + " h-full"}>{children}</main>
         </AuthProvider>
       </body>
     </html>

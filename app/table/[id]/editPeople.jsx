@@ -66,7 +66,7 @@ export function EditPeople({ children }) {
 
     return (
         <div className="z-40 fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-            <div className="flex bg-slate-200 p-2 rounded-lg w-11/12 h-[87%]">
+            <div className="flex bg-background p-2 rounded-lg w-11/12 h-[87%]">
                 <div className='text-sm px-2 pb-6 flex flex-col justify-center items-center h-full w-full'>
                     <h1 className='font-extrabold text-4xl uppercase pt-5'>Edit People</h1>
                     <div className="flex py-4 justify-between w-full items-center divide-x-2 divide-gray-600 h-full">
@@ -76,13 +76,13 @@ export function EditPeople({ children }) {
                                 {people.map((person, i) => (
                                     <li key={i} onClick={(e) => clickPerson(i)} className="inline-flex">
                                         <input type="radio" id={"person" + i} name="hosting" value={"person" + i} className="hidden peer" required></input>
-                                        <label htmlFor={"person" + i} className="text-2xl font-semibold w-full p-3 rounded-lg cursor-pointer peer-checked:bg-slate-400 hover:bg-slate-300">{person.name}</label>
+                                        <label htmlFor={"person" + i} className="text-2xl font-semibold w-full p-3 rounded-lg cursor-pointer peer-checked:text-secondary hover:bg-bg_prim">{person.name}</label>
                                     </li>
                                 ))}
                             </ul>
                             <div onClick={(e) => newPerson()}>
                                 <input type="radio" id={"newperson"} name="hosting" value={"newperson"} className="hidden peer" required></input>
-                                <label htmlFor={"newperson"} className="text-2xl font-semibold inline-flex items-center justify-between w-full p-3 rounded-lg cursor-pointer peer-checked:bg-slate-300 hover:bg-slate-300">
+                                <label htmlFor={"newperson"} className="text-2xl font-semibold inline-flex items-center justify-between w-full p-3 rounded-lg cursor-pointer peer-checked:text-secondary hover:bg-bg_prim">
                                     <i className="fa-solid fa-plus pr-2 pt-1"></i>
                                     <h3>New Person</h3>
                                 </label>
@@ -93,8 +93,8 @@ export function EditPeople({ children }) {
                         </div>
                     </div>
                     <div className="flex justify-between w-[30%] pt-6">
-                        <button onClick={finishHandler} className=" bg-sky-700 hover:bg-sky-600 text-white text-2xl font-bold py-4 px-8 rounded">finish</button>
-                        <button onClick={saveHandler} className=" bg-sky-700 hover:bg-sky-600 text-white text-2xl font-bold py-4 px-8 rounded">save</button>
+                        <button onClick={finishHandler} className=" bg-background_pop hover:bg-bg_prim text-2xl font-bold py-4 px-8 rounded">finish</button>
+                        <button onClick={saveHandler} className=" bg-background_pop hover:bg-bg_prim text-2xl font-bold py-4 px-8 rounded">save</button>
                     </div>
                 </div>
             </div >
