@@ -13,7 +13,7 @@ module.exports = {
         'background_pop': '#0b3647',
         'primary': '#FEEDB4',
         'secondary': '#61d1ff',
-        'rose': '#F2B2B2',
+        'rose': '#f79494',
         'bg_prim': '#344d4c',
         'bg_sec': '#14485b',
       },
