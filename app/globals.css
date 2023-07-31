@@ -8,7 +8,7 @@
 }
 
 @media (max-width: 570px) {
-  .no-scrollbar::-webkit-scrollbar {
+  ::-webkit-scrollbar {
     display: none;
   }
 }
