@@ -18,7 +18,7 @@ export default function Home() {
     const docRef = await addDoc(collection(db, "tables"), { write: [uid] });
     console.log(docRef.id);
 
-    window.location.replace(`/table/${docRef.id}`)
+    window.location.href = `/table/${docRef.id}`
   }
 
   return (
@@ -32,11 +32,11 @@ export default function Home() {
           {!adminLoading &&
             <div>
               <a className="text-2xl font-extrabold">Admin Tables</a>
-              <ul className="flex flex-row items-center p-4 sm:p-8 space-x-6 w-full h-fit overflow-x-auto whitespace-nowrap scroll-smooth no-scrollbar">
+              <ul className="flex flex-row items-center p-4 sm:p-8 space-x-6 w-full h-fit overflow-x-auto whitespace-nowrap scroll-smooth">
                 {adminTable.map((table, index) => (
-                  <li key={index} onClick={(e) => window.location.replace(`/table/${table.docid}`)} className="flex flex-wrap break-normal items-center justify-center bg-background_pop hover:bg-bg_prim rounded hover:scale-105 ease-in-out w-[100px] sm:w-[640px] h-[100px] sm:h-[384px] shrink-0 cursor-pointer duration-300 font-bold text-base sm:text-2xl">{table.docname}</li>
+                  <li key={index} onClick={(e) => window.location.href = `/table/${table.docid}`} className="flex flex-wrap break-normal items-center justify-center bg-background_pop hover:bg-bg_prim rounded hover:scale-105 ease-in-out w-[100px] sm:w-[320px] 2xl:w-[640px] h-[100px] sm:h-[150px] 2xl:h-[384px] shrink-0 cursor-pointer duration-300 font-bold text-base sm:text-2xl">{table.docname}</li>
                 ))}
-                <li onClick={(e) => newTable()} className="flex items-center justify-center bg-background_pop hover:bg-bg_prim rounded hover:scale-105 ease-in-out w-[100px] sm:w-[640px] h-[100px] sm:h-[384px]   shrink-0 cursor-pointer duration-300 font-bold">
+                <li onClick={(e) => newTable()} className="flex items-center justify-center bg-background_pop hover:bg-bg_prim rounded hover:scale-105 ease-in-out w-[100px] sm:w-[320px] 2xl:w-[640px] h-[100px] sm:h-[150px] 2xl:h-[384px] shrink-0 cursor-pointer duration-300 font-bold">
                   <i className="fa-solid fa-plus text-xl sm:text-4xl"></i>
                 </li>
               </ul>
@@ -47,7 +47,7 @@ export default function Home() {
             {!viewLoading &&
               <ul className="relative flex items-center p-4 sm:p-8 space-x-6 w-full h-full overflow-x-auto whitespace-nowrap scroll-smooth">
                 {viewTable.map((table, index) => (
-                  <li key={index} onClick={(e) => window.location.replace(`/table/${table.docid}`)} className="flex items-center justify-center bg-background_pop hover:bg-bg_prim rounded hover:scale-105 ease-in-out w-[100px] sm:w-[640px] h-[100px] sm:h-[384px] shrink-0 cursor-pointer duration-300 font-bold text-base sm:text-2xl">{table.docname}</li>
+                  <li key={index} onClick={(e) => window.location.href = `/table/${table.docid}`} className="flex items-center justify-center bg-background_pop hover:bg-bg_prim rounded hover:scale-105 ease-in-out w-[100px] sm:w-[320px] 2xl:w-[640px] h-[100px] sm:h-[150px] 2xl:h-[384px] shrink-0 cursor-pointer duration-300 font-bold text-base sm:text-2xl">{table.docname}</li>
                 ))}
               </ul>
             }
