@@ -32,12 +32,12 @@ export default function Home() {
           {!adminLoading &&
             <div>
               <a className="text-2xl font-extrabold">Admin Tables</a>
-              <ul className="flex flex-row items-center p-8 space-x-6 w-full h-full overflow-x-auto whitespace-nowrap scroll-smooth">
+              <ul className="flex flex-row items-center p-4 sm:p-8 space-x-6 w-full h-fit overflow-x-auto whitespace-nowrap scroll-smooth no-scrollbar">
                 {adminTable.map((table, index) => (
-                  <li key={index} onClick={(e) => window.location.replace(`/table/${table.docid}`)} className="flex items-center justify-center bg-background_pop hover:bg-bg_prim rounded hover:scale-105 ease-in-out w-full max-w-sm h-[384px] shrink-0 cursor-pointer duration-300 font-bold text-lg sm:text-2xl">{table.docname}</li>
+                  <li key={index} onClick={(e) => window.location.replace(`/table/${table.docid}`)} className="flex flex-wrap break-normal items-center justify-center bg-background_pop hover:bg-bg_prim rounded hover:scale-105 ease-in-out w-[100px] sm:w-[640px] h-[100px] sm:h-[384px] shrink-0 cursor-pointer duration-300 font-bold text-base sm:text-2xl">{table.docname}</li>
                 ))}
-                <li onClick={(e) => newTable()} className="flex items-center justify-center bg-background_pop hover:bg-bg_prim rounded hover:scale-105 ease-in-out w-full max-w-sm h-[384px] shrink-0 cursor-pointer duration-300 font-bold">
-                  <i className="fa-solid fa-plus text-2xl sm:text-4xl"></i>
+                <li onClick={(e) => newTable()} className="flex items-center justify-center bg-background_pop hover:bg-bg_prim rounded hover:scale-105 ease-in-out w-[100px] sm:w-[640px] h-[100px] sm:h-[384px]   shrink-0 cursor-pointer duration-300 font-bold">
+                  <i className="fa-solid fa-plus text-xl sm:text-4xl"></i>
                 </li>
               </ul>
             </div>
@@ -45,9 +45,9 @@ export default function Home() {
           {viewTable.length != 0 && <div>
             <a className="text-2xl font-extrabold">View Tables</a>
             {!viewLoading &&
-              <ul className="relative flex items-center p-8 space-x-6 w-full h-full overflow-x-auto whitespace-nowrap scroll-smooth">
+              <ul className="relative flex items-center p-4 sm:p-8 space-x-6 w-full h-full overflow-x-auto whitespace-nowrap scroll-smooth">
                 {viewTable.map((table, index) => (
-                  <li key={index} onClick={(e) => window.location.replace(`/table/${table.docid}`)} className="flex items-center justify-center bg-background_pop hover:bg-bg_prim rounded hover:scale-105 ease-in-out w-full max-w-sm h-[384px] shrink-0 cursor-pointer duration-300 font-bold text-lg sm:text-2xl">{table.docname}</li>
+                  <li key={index} onClick={(e) => window.location.replace(`/table/${table.docid}`)} className="flex items-center justify-center bg-background_pop hover:bg-bg_prim rounded hover:scale-105 ease-in-out w-[100px] sm:w-[640px] h-[100px] sm:h-[384px] shrink-0 cursor-pointer duration-300 font-bold text-base sm:text-2xl">{table.docname}</li>
                 ))}
               </ul>
             }

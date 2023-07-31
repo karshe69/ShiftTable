@@ -7,6 +7,12 @@
   width: 10px;
 }
 
+@media (max-width: 570px) {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+}
+
 /* Track */
 ::-webkit-scrollbar-track {
   background: #f1f1f1;
