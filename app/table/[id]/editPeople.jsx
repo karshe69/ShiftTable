@@ -72,7 +72,7 @@ export function EditPeople({ children }) {
                     <div className="sm:space-y-2 p-2 sm:p-3 sm:h-[80%] flex flex-col">
                         <h2 className="sm:text-3xl whitespace-nowrap font-bold text-center sm:text-start">People</h2>
                         <div className='flex sm:flex-col space-x-1 sm:space-x-0'>
-                            <ul className="relative grid sm:gap-6 overflow-x-hidden overflow-y-auto whitespace-nowrap scroll-smooth max-h-full">
+                            <ul className="space-x-1 sm:space-x-0 relative grid grid-flow-col sm:gap-6 sm:overflow-x-hidden overflow-x-auto sm:overflow-y-auto whitespace-nowrap scroll-smooth max-w-full sm:max-h-full">
                                 {people.map((person, i) => (
                                     <li key={i} onClick={(e) => clickPerson(i)} className="inline-flex">
                                         <input type="radio" id={"person" + i} name="hosting" value={"person" + i} className="hidden peer" required></input>
