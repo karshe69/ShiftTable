@@ -10,29 +10,59 @@ export function TableElem({ children }) {
     let columnTitles = []
     let editable = children.editable
     let char
+    let small = window.innerWidth < 640
     for (let i = 0; i < columnTitlesTemplate.length; i++) {
         char = columnTitlesTemplate[i].substring(0, 1)
         columnTitlesTemplate[i].substring(1)
-        if (char == 'a') {
-            columnTitles[i] = "sunday"
+        if (!small) {
+            switch (char) {
+                case 'a':
+                    columnTitles[i] = "sunday"
+                    break
+                case 'b':
+                    columnTitles[i] = "monday"
+                    break
+                case 'c':
+                    columnTitles[i] = "tuesday"
+                    break
+                case 'd':
+                    columnTitles[i] = "wednesday"
+                    break
+                case 'e':
+                    columnTitles[i] = "thursday"
+                    break
+                case 'f':
+                    columnTitles[i] = "friday"
+                    break
+                case 'g':
+                    columnTitles[i] = "saturday"
+                    break
+            }
         }
-        if (char == 'b') {
-            columnTitles[i] = "monday"
-        }
-        if (char == 'c') {
-            columnTitles[i] = "tuesday"
-        }
-        if (char == 'd') {
-            columnTitles[i] = "wednesday"
-        }
-        if (char == 'e') {
-            columnTitles[i] = "thursday"
-        }
-        if (char == 'f') {
-            columnTitles[i] = "friday"
-        }
-        if (char == 'g') {
-            columnTitles[i] = "saturday"
+        else {
+            switch (char) {
+                case 'a':
+                    columnTitles[i] = "s"
+                    break
+                case 'b':
+                    columnTitles[i] = "m"
+                    break
+                case 'c':
+                    columnTitles[i] = "t"
+                    break
+                case 'd':
+                    columnTitles[i] = "w"
+                    break
+                case 'e':
+                    columnTitles[i] = "t"
+                    break
+                case 'f':
+                    columnTitles[i] = "f"
+                    break
+                case 'g':
+                    columnTitles[i] = "s"
+                    break
+            }
         }
     }
     const onChangeInput = (value, index, key) => {
@@ -46,31 +76,21 @@ export function TableElem({ children }) {
     }
     return (
         <>
-            <table className="bg-gray-100 border-collapse w-1/2 h-full rounded-lg">
-                <colgroup>
-                    <col className="" />
-                    <col className="border-x border-gray-600" />
-                    <col className="border-x border-gray-600" />
-                    <col className="border-x border-gray-600" />
-                    <col className="border-x border-gray-600" />
-                    <col className="border-x border-gray-600" />
-                    <col className="border-x border-gray-600" />
-                    <col className="" />
-                </colgroup>
-                <thead className="bg-gray-600 text-white text-center">
+            <table className="text-xs sm:text-base font-normal bg-background_pop border-collapse sm:w-1/2 h-full rounded-lg">
+                <thead className="bg-bg_sec">
                     <tr>
-                        <th className="px-4 py-2">shifts</th>
+                        <th className="sm:px-4 sm:py-2 font-normal">shifts</th>
                         {columnTitles.map((title, index) => (
-                            <th key={index} className="px-4 py-2">{title}</th>
+                            <th key={index} className="px-1 sm:px-4 sm:py-2 font-normal">{title}</th>
                         ))}
                     </tr>
                 </thead>
-                <tbody className="text-center">
+                <tbody className="">
                     {table.map((personel, index) => (
                         <tr key={index} className="border-y border-gray-700">
-                            <td className="rounded-md px-4 py-2">
+                            <td className="rounded-md sm:px-4 sm:py-2">
                                 {editable && <input
-                                    className="bg-transparent"
+                                    className="bg-background_pop px-1 sm:px-4 max-w-[10ch]"
                                     name="name"
                                     value={rowTitles[index]}
                                     type="text"
@@ -80,9 +100,9 @@ export function TableElem({ children }) {
                                 {!editable && rowTitles[index]}
                             </td>
                             {Object.keys(personel).sort().map((val) => (
-                                <td key={val} className="rounded-md px-3 py-2">
+                                <td key={val} className="rounded-md sm:px-3 sm:py-2">
                                     {editable && <input
-                                        className="bg-transparent w-full"
+                                        className="bg-background_pop w-full text-center"
                                         value={personel[val]}
                                         type="number"
                                         onChange={(e) => onChangeInput(e.target.value, index, val)}

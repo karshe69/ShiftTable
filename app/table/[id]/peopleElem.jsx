@@ -17,15 +17,15 @@ export function PeopleElem({ children }) {
             {!peopleLoading && <ValidatePeople>{{ people, setValid, setLoading, tableID }}</ValidatePeople>}
             {valid &&
                 <div className="flex flex-col items-end">
-                    <i className="fa-solid fa-user-pen text-2xl cursor-pointer" onClick={(e) => setEdit(true)}></i>
-                    <div className="px-6 py-4">
+                    <i className="fa-solid fa-user-pen sm:text-2xl cursor-pointer" onClick={(e) => setEdit(true)}></i>
+                    <div className="px-3 sm:px-6 sm:py-4">
                         <h2>Personal</h2>
                     </div>
                 </div>
             }
             {(!loading && (!valid || edit)) && <EditPeople>{{ people, setValid, tableID, setEdit, days, titles }}</EditPeople>}
             {loading && <div className='py-6 px-12'>
-                <i className="fa-solid fa-spinner text-4xl animate-spin"></i>
+                <i className="fa-solid fa-spinner text-xl sm:text-4xl animate-spin"></i>
             </div>}
         </>
     )

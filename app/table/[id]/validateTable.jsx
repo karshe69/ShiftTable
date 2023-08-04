@@ -20,7 +20,7 @@ export default function ValidateTable({ children }) {
                 name = table.name
             }
             else {
-                table.name = "test name"
+                table.name = ""
             }
             if (table.size) {
                 size = table.size

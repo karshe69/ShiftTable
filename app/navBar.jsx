@@ -69,14 +69,14 @@ export default function NavBar() {
                     </div>
                 </div>
             )}
-            <nav className="p-6">
+            <nav className="sm:p-6 p-1">
                 <div className="flex justify-between items-center">
-                    <a href="/" className="text-2xl font-medium">Shift Table</a>
+                    <a href="/" className="sm:text-2xl font-medium">Shift Table</a>
                     <div className="flex">
-                        <a href="/" className="text-lg mr-4">Home</a>
-                        <a href="/contact" className="text-lg mr-4">Contact</a>
-                        {!currentUser && <button onClick={openSignin} className="text-lg mr-4 font-bold rounded-full hover:bg-slate-700">login</button>}
-                        {currentUser && <button onClick={logoutHandler} className="text-lg mr-4 font-bold rounded-full hover:bg-slate-700">logout</button>}
+                        <a href="/" className="text-sm sm:text-lg mr-4">Home</a>
+                        <a href="/contact" className="text-sm sm:text-lg mr-4">Contact</a>
+                        {!currentUser && <button onClick={openSignin} className="text-sm sm:text-lg mr-4 font-bold rounded-full hover:bg-slate-700">login</button>}
+                        {currentUser && <button onClick={logoutHandler} className="text-sm sm:text-lg mr-4 font-bold rounded-full hover:bg-slate-700">logout</button>}
                     </div>
                 </div>
             </nav>

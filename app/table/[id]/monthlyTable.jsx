@@ -98,20 +98,20 @@ export function MonthlyTable({ children }) {
         <>
             <div className="h-full w-full flex flex-col justify-center">
                 <div>
-                    <h4 className="text-lg font-bold">{year}</h4>
-                    <div className="flex justify-center">
-                        <i className="fa-solid fa-caret-left pt-1 text-2xl" onClick={(e) => handleMonth(-1)}></i>
-                        <h3 className="font-bold text-2xl px-2 min-w-[20%]">{months[month]}</h3>
-                        <i className="fa-solid fa-caret-right pt-1 text-2xl" onClick={(e) => handleMonth(1)}></i>
+                    <h4 className="text-xs sm:text-lg font-bold">{year}</h4>
+                    <div className="text-sm sm:text-2xl flex justify-center">
+                        <i className="fa-solid fa-caret-left pt-1 " onClick={(e) => handleMonth(-1)}></i>
+                        <h3 className="font-bold px-2 min-w-[20%]">{months[month]}</h3>
+                        <i className="fa-solid fa-caret-right pt-1" onClick={(e) => handleMonth(1)}></i>
                     </div>
                 </div>
-                <div className="h-full w-full flex flex-row justify-center p-2">
-                    <ul className="gap-6 flex flex-col content-between justify-center pr-8">
+                <div className="h-full w-full flex flex-row justify-center sm:p-2">
+                    <ul className="gap-2 sm:gap-6 flex flex-col content-between justify-center pr-1 sm:pr-8">
                         {titles.map((title, index) => (
                             <li key={colors[index]} className="flex justify-start items-center" onClick={(e) => handleCheck(e, index)}>
                                 <input type="checkbox" id={colors[index]} value={colors[index]} className="hidden peer" required=""></input>
                                 <label htmlFor={colors[index]} className={"inline-flex items-center justify-between w-min h-min p-2 bg-inherit border-2 rounded-lg cursor-pointer border-" + colors[index] + "-600 peer-checked:bg-" + colors[index] + "-600"}></label>
-                                <label className="font-bold text-xl text-left pl-1">{title}</label>
+                                <label className="font-bold text-sm sm:text-xl text-left pl-1">{title}</label>
                             </li>
                         ))}
                     </ul>
@@ -124,8 +124,8 @@ export function MonthlyTable({ children }) {
                                             {(val > 0) &&
                                                 < td key={val + months[month] + year} className="border" onClick={(e) => colorTable(val + months[month] + year, show)}>
                                                     <input htmlFor={val + months[month] + year} id={val + months[month] + year} value={val + months[month] + year} className="hidden peer" readOnly required=""></input>
-                                                    <div className="h-full w-full relative flex p-1">
-                                                        <h2 className="z-40 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 font-bold text-2xl">{val}</h2>
+                                                    <div className="h-full w-full relative flex sm:p-1">
+                                                        <h2 className="z-40 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 font-bold text-xs sm:text-2xl">{val}</h2>
                                                         {(show == 'perm' && person.permReservs[val + months[month] + year]) &&
                                                             person.permReservs[val + months[month] + year].split("").map((color) => (
                                                                 <div key={val + months[month] + year} className={"w-full h-full bg-" + colors[color] + "-600"}></div>

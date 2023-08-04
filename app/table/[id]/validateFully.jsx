@@ -17,7 +17,7 @@ export default function ValidateFully({ children }) {
         if (table.titles.length != table.size) {
             bool = false
             for (let i = table.titles.length; i < table.size; i++) {
-                table.titles[i] = "temporary title"
+                table.titles[i] = ""
             }
         }
         if (!table.personel || !Array.isArray(table.personel)) {
