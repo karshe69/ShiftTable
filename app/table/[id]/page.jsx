@@ -17,7 +17,7 @@ export default function Home({ params }) {
     const [fullyState, setFullyState] = useState(true)
 
     return (
-        <main className="min-h-screen px-2 py-2 sm:px-24 sm:py-14">
+        <main className="h-full px-2 py-2 sm:px-24 sm:py-14">
             {!tableLoading &&
                 <div>
                     <div className='flex-row flex space-x-1 sm:space-x-2'>
